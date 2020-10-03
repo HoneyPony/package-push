@@ -6,11 +6,19 @@ export var which = 0
 
 signal alert_rotate
 
+onready var ui = get_parent()
+
 func _ready():
+	
+	
 	angle = 90
 	rotation_degrees = 90
 	
 func _process(delta):
+	visible = not ui.playing
+	if ui.playing:
+		return
+	
 	var mouse = get_global_mouse_position()
 	
 	var size = texture.get_size()

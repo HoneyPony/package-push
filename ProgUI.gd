@@ -23,6 +23,9 @@ var held_instruction = null
 
 var instruction_sprite = null
 
+var tutorial_step = 0
+var tutorial_end = 0
+
 func setup():
 	slots.region_rect.size.x = 46 * columns
 	
@@ -32,6 +35,12 @@ func setup():
 		for x in range(0, columns):
 			arr.append(null)
 		instructions.append(arr)
+		
+	if tutorial_step > 0:
+		show_tutorial_step(tutorial_step)
+	else:
+		# Hide all outlines
+		show_tutorial_step(0)
 		
 func _ready():
 	cursor.hide()
@@ -58,6 +67,7 @@ func update_cursor():
 	else:
 		cursor.texture = tex_from_ins(held_instruction)
 		cursor.show()
+		$Pickup.play()
 
 
 	
@@ -143,6 +153,14 @@ func always_process(delta):
 		if mouse.y < global_position.y:
 			dragging_camera = true
 			drag_last_mouse = get_local_mouse_position()
+			
+	if Input.is_action_just_released("spacebar"):
+		tutorial_step += 1
+		if tutorial_step <= tutorial_end:
+			show_tutorial_step(tutorial_step)
+		else:
+			hide_tut(tutorial_end)
+			show_tutorial_step(0)
 	
 func _process(delta):
 	always_process(delta)
@@ -173,6 +191,10 @@ func _process(delta):
 				instructions[closest_cell.y][closest_cell.x] = held_instruction
 				generate_instruction_sprite()
 				
+				$Place.play()
+			else:
+				$Throwaway.play()	
+			
 		held_instruction = null
 		cursor.hide()
 	
@@ -231,6 +253,9 @@ func get_robot_direction(index):
 	return dir
 
 func _on_alert_rotate(which, angle):
+	if playing:
+		return
+	
 	if which >= rows:
 		return
 	
@@ -243,6 +268,46 @@ func _on_alert_rotate(which, angle):
 		dir = Robot.Dir.Left
 	
 	coordinator.update_base_rotation(which, dir)
+	$Rotation.play()
+	
+func get_tutorial_node(step):
+	var path = "CanvasLayer/Tutorial/Tutorial_" + String(step)
+	return get_node(path)
+	
+func show_tut(f):
+	var n = get_tutorial_node(f)
+	if n != null:
+		n.show()
 
+func hide_tut(f):
+	var n = get_tutorial_node(f)
+	if n != null:
+		n.hide()
+	
+func show_tutorial_step(step):
+	var last = step - 1
+	if last >= 1:
+		hide_tut(last)
+		
+	if step <= 18:
+		show_tut(step)
+	$OutlinePalette.visible = step == 5
+	$OutlineSlots.visible = step == 6
+	$OutlineLeft.visible = step == 7
+	$OutlinePlay.visible = step == 8
+	$OutlineForward.visible = step == 9
+	$OutlineBackward.visible = step == 10
+	$OutlineRot.visible = step == 13
+	$OutlineRLeft.visible = step == 15
+	$OutlineRRight.visible = step == 16
+	$OutlineFlip.visible = step == 17
+	$OutlineFoam.visible = step == 1000
+	
 func _on_back():
 	get_node("/root/Root/CanvasLayer/SceneTransition").switch_scene("res://LevelSelect.tscn")
+
+
+func _on_step():
+	$Play.texture = sp_Stop
+	playing = true
+	coordinator.manual_step(self)

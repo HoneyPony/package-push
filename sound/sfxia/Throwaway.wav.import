@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Throwaway.wav-27d74c0520f791f0e621ffd38d32f866.sample"
+
+[deps]
+
+source_file="res://sound/sfxia/Throwaway.wav"
+dest_files=[ "res://.import/Throwaway.wav-27d74c0520f791f0e621ffd38d32f866.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

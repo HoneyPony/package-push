@@ -6,23 +6,7 @@
 [ext_resource path="res://SceneTransition.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Coordinator.gd" type="Script" id=5]
 
-[sub_resource type="TileSet" id=1]
-0/name = "GroundTile.svg 0"
-0/texture = ExtResource( 1 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 0, 64, 64 )
-0/tile_mode = 0
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape_one_way = false
-0/shape_one_way_margin = 0.0
-0/shapes = [  ]
-0/z_index = 0
-
-[sub_resource type="Shader" id=2]
+[sub_resource type="Shader" id=1]
 resource_local_to_scene = true
 code = "shader_type canvas_item;
 render_mode blend_mix;
@@ -46,16 +30,38 @@ void fragment() {
 }"
 custom_defines = ""
 
-[sub_resource type="ShaderMaterial" id=3]
+[sub_resource type="ShaderMaterial" id=2]
 resource_local_to_scene = true
-shader = SubResource( 2 )
+shader = SubResource( 1 )
 shader_param/time = 0.0
 shader_param/anim = ExtResource( 3 )
+
+[sub_resource type="TileSet" id=3]
+0/name = "GroundTile.svg 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
 
 [node name="Root" type="Node2D"]
 
 [node name="Coordinator" type="Node2D" parent="."]
 script = ExtResource( 5 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="SceneTransition" parent="CanvasLayer" instance=ExtResource( 4 )]
+material = SubResource( 2 )
 
 [node name="Camera" type="Camera2D" parent="."]
 current = true
@@ -71,11 +77,6 @@ process_priority = -2617
 z_index = 1000
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource( 1 )
+tile_set = SubResource( 3 )
 format = 1
 tile_data = PoolIntArray( 7, 0, 0 )
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="SceneTransition" parent="CanvasLayer" instance=ExtResource( 4 )]
-material = SubResource( 3 )

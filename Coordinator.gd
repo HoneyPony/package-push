@@ -1,6 +1,7 @@
 extends Node2D
 
 var is_playing = false
+var is_manual = false
 
 var TIME_PER_TICK = 0.2
 var tick_timer = 0
@@ -149,11 +150,15 @@ func _ready():
 	ROBOT_FILTER = Node2D.new()
 	
 	if Global.intended_level == 0:
+		the_ui.tutorial_step = 1
+		the_ui.tutorial_end = 10
 		current_level = Level.new([Vector2(0, 0)], [Vector2(3, 0)], 7, 1, [
 			1, 1, 1, 1, 1, 1, 2
 		], 5, 1)
 	
 	if Global.intended_level == 1:
+		the_ui.tutorial_step = 11
+		the_ui.tutorial_end = 18
 		current_level = Level.new([Vector2(0, 2)], [Vector2(2, 0)], 5, 5, [
 			2, 1, 1, 1, 1,
 			0, 0, 0, 0, 1,
@@ -273,6 +278,18 @@ func _ready():
 			1, 0, 0, 0, 0, 0
 		], 3, 1) # 3+ x 1
 	
+	if Global.intended_level == 12:
+		current_level = Level.new([Vector2(4, 4), Vector2(9, 4)], [Vector2(4, 2), Vector2(4, 6), Vector2(2, 4), Vector2(6, 4), Vector2(9, 2), Vector2(9, 6)], 10, 9, [
+			0, 0, 0, 0, 2, 0, 0, 0, 0, 2,
+			0, 0, 0, 0, 1, 0, 0, 0, 0, 1,
+			0, 0, 0, 0, 1, 0, 0, 0, 0, 1,
+			0, 0, 0, 0, 1, 0, 0, 0, 0, 1,
+			2, 1, 1, 1, 1, 1, 1, 1, 2, 1,
+			0, 0, 0, 0, 1, 0, 0, 0, 0, 1,
+			0, 0, 0, 0, 1, 0, 0, 0, 0, 1,
+			0, 0, 0, 0, 1, 0, 0, 0, 0, 1,
+			0, 0, 0, 0, 2, 0, 0, 0, 0, 2
+		], 4, 2) # 3+ x 1
 		
 	if Global.intended_level == 1000:
 		current_level = Level.new([Vector2(1, 0), Vector2(0, 4), Vector2(4, 5), Vector2(5, 1)], [Vector2(3, 1), Vector2(1, 2), Vector2(2, 4), Vector2(4, 3)], 6, 6, [
@@ -486,9 +503,6 @@ func tick():
 		
 		if not obj.is_package():
 			return
-			
-	
-			
 	# Won the level!
 	
 func play(delta):
@@ -497,6 +511,14 @@ func play(delta):
 	if tick_timer <= 0:
 		tick_timer = TIME_PER_TICK
 		tick()
+		
+func manual_step(ui):
+	if not is_playing:
+		begin_playing(ui)
+		
+	is_manual = true
+	
+	tick()
 		
 func begin_playing(ui):
 	tick_id = 0
@@ -512,11 +534,16 @@ func begin_playing(ui):
 	is_playing = true
 	tick_timer = TIME_PER_TICK
 	
+	is_manual = false
+	
 func stop_playing():
 	is_playing = false
 	reload_current_level()
 	
 func update_base_rotation(index, rot):
+	if is_playing:
+		return
+	
 	robots[index].direction = rot
 	
 func _process(delta):
@@ -524,5 +551,5 @@ func _process(delta):
 	#	is_playing = true
 		#tick_timer = TIME_PER_TICK
 		
-	if is_playing:
+	if is_playing and not is_manual:
 		play(delta)

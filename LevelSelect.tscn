@@ -345,6 +345,131 @@ custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
 text = "10"
 
+[node name="Row3" type="HBoxContainer" parent="Rows"]
+margin_top = 144.0
+margin_right = 500.0
+margin_bottom = 204.0
+custom_constants/separation = 25
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelButton1" type="TextureButton" parent="Rows/Row3"]
+margin_right = 80.0
+margin_bottom = 60.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 3 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+level = 10
+
+[node name="Number" type="Label" parent="Rows/Row3/LevelButton1"]
+margin_left = 22.3537
+margin_top = 13.2882
+margin_right = 126.354
+margin_bottom = 74.2882
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+text = "11"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelButton2" type="TextureButton" parent="Rows/Row3"]
+margin_left = 105.0
+margin_right = 185.0
+margin_bottom = 60.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 3 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+level = 11
+
+[node name="Number" type="Label" parent="Rows/Row3/LevelButton2"]
+margin_left = 20.7663
+margin_top = 14.0819
+margin_right = 124.766
+margin_bottom = 75.0819
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+text = "12"
+
+[node name="LevelButton3" type="TextureButton" parent="Rows/Row3"]
+margin_left = 210.0
+margin_right = 290.0
+margin_bottom = 60.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 3 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+level = 12
+
+[node name="Number" type="Label" parent="Rows/Row3/LevelButton3"]
+margin_left = 19.7296
+margin_top = 14.4301
+margin_right = 123.73
+margin_bottom = 107.43
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+text = "13
+"
+
+[node name="LevelButton4" type="TextureButton" parent="Rows/Row3"]
+margin_left = 315.0
+margin_right = 395.0
+margin_bottom = 60.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 3 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+level = 13
+
+[node name="Number" type="Label" parent="Rows/Row3/LevelButton4"]
+margin_left = 16.9759
+margin_top = 13.2395
+margin_right = 120.976
+margin_bottom = 74.2395
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+text = "14"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelButton5" type="TextureButton" parent="Rows/Row3"]
+margin_left = 420.0
+margin_right = 500.0
+margin_bottom = 60.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 3 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+level = 14
+
+[node name="Number" type="Label" parent="Rows/Row3/LevelButton5"]
+margin_left = 17.2182
+margin_top = 12.5545
+margin_right = 132.218
+margin_bottom = 73.5545
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+text = "15"
+
 [node name="Label" type="Label" parent="."]
 anchor_right = 1.0
 margin_top = 16.0
@@ -359,9 +484,6 @@ __meta__ = {
 
 [node name="SceneTransition" parent="." instance=ExtResource( 7 )]
 material = SubResource( 2 )
-margin_left = -34.8972
-margin_top = -1.52588e-05
-margin_right = -34.8972
 [connection signal="pressed" from="Rows/Row1/LevelButton1" to="Rows/Row1/LevelButton1" method="_on_self_pressed"]
 [connection signal="pressed" from="Rows/Row1/LevelButton2" to="Rows/Row1/LevelButton2" method="_on_self_pressed"]
 [connection signal="pressed" from="Rows/Row1/LevelButton3" to="Rows/Row1/LevelButton3" method="_on_self_pressed"]
@@ -372,3 +494,8 @@ margin_right = -34.8972
 [connection signal="pressed" from="Rows/Row2/LevelButton3" to="Rows/Row2/LevelButton3" method="_on_self_pressed"]
 [connection signal="pressed" from="Rows/Row2/LevelButton4" to="Rows/Row2/LevelButton4" method="_on_self_pressed"]
 [connection signal="pressed" from="Rows/Row2/LevelButton5" to="Rows/Row2/LevelButton5" method="_on_self_pressed"]
+[connection signal="pressed" from="Rows/Row3/LevelButton1" to="Rows/Row3/LevelButton1" method="_on_self_pressed"]
+[connection signal="pressed" from="Rows/Row3/LevelButton2" to="Rows/Row3/LevelButton2" method="_on_self_pressed"]
+[connection signal="pressed" from="Rows/Row3/LevelButton3" to="Rows/Row3/LevelButton3" method="_on_self_pressed"]
+[connection signal="pressed" from="Rows/Row3/LevelButton4" to="Rows/Row3/LevelButton4" method="_on_self_pressed"]
+[connection signal="pressed" from="Rows/Row3/LevelButton5" to="Rows/Row3/LevelButton5" method="_on_self_pressed"]

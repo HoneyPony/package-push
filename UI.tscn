@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://vector/Prog/BG.svg" type="Texture" id=1]
 [ext_resource path="res://vector/Prog/Forward.svg" type="Texture" id=2]
@@ -15,9 +15,27 @@
 [ext_resource path="res://RobotRotIcon.gd" type="Script" id=13]
 [ext_resource path="res://vector/Prog/Backward.svg" type="Texture" id=14]
 [ext_resource path="res://vector/Prog/Spin.svg" type="Texture" id=15]
+[ext_resource path="res://sound/sfxia/Pickup.wav" type="AudioStream" id=16]
 [ext_resource path="res://vector/LevelSelect/ButtonPress.svg" type="Texture" id=17]
 [ext_resource path="res://vector/LevelSelect/Button.svg" type="Texture" id=18]
 [ext_resource path="res://vector/LevelSelect/ButtonHighlight.svg" type="Texture" id=19]
+[ext_resource path="res://sound/sfxia/Place.wav" type="AudioStream" id=20]
+[ext_resource path="res://sound/sfxia/Throwaway.wav" type="AudioStream" id=21]
+[ext_resource path="res://sound/sfxia/Rotation.wav" type="AudioStream" id=22]
+[ext_resource path="res://vector/Prog/SlotsOutline.svg" type="Texture" id=23]
+[ext_resource path="res://vector/Prog/OutlinePalette.svg" type="Texture" id=24]
+[ext_resource path="res://vector/Prog/OutlineLeft.svg" type="Texture" id=25]
+[ext_resource path="res://vector/Prog/OutlineInstruction.svg" type="Texture" id=26]
+[ext_resource path="res://vector/Prog/OutlinePlay.svg" type="Texture" id=27]
+[ext_resource path="res://vector/Prog/OutlineRot.svg" type="Texture" id=28]
+[ext_resource path="res://vector/Prog/Step.svg" type="Texture" id=29]
+
+[sub_resource type="DynamicFontData" id=3]
+font_path = "res://font/luckiest-guy/LuckiestGuy.ttf"
+
+[sub_resource type="DynamicFont" id=4]
+size = 30
+font_data = SubResource( 3 )
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://font/luckiest-guy/LuckiestGuy.ttf"
@@ -30,10 +48,45 @@ font_data = SubResource( 1 )
 script = ExtResource( 8 )
 
 [node name="BG" type="Sprite" parent="."]
-position = Vector2( -3237.88, 0 )
+position = Vector2( -3237.22, 0 )
 scale = Vector2( 176.697, 1.111 )
 texture = ExtResource( 1 )
 centered = false
+
+[node name="OutlineForward" type="Sprite" parent="."]
+position = Vector2( -127, 31 )
+z_index = 10
+texture = ExtResource( 26 )
+
+[node name="OutlineBackward" type="Sprite" parent="."]
+position = Vector2( -127, 66.274 )
+z_index = 10
+texture = ExtResource( 26 )
+
+[node name="OutlineRLeft" type="Sprite" parent="."]
+position = Vector2( -81.856, 31 )
+z_index = 10
+texture = ExtResource( 26 )
+
+[node name="OutlineRRight" type="Sprite" parent="."]
+position = Vector2( -81.856, 66.274 )
+z_index = 10
+texture = ExtResource( 26 )
+
+[node name="OutlineFlip" type="Sprite" parent="."]
+position = Vector2( -33.6, 31 )
+z_index = 10
+texture = ExtResource( 26 )
+
+[node name="OutlineFoam" type="Sprite" parent="."]
+position = Vector2( -33.6, 66.274 )
+z_index = 10
+texture = ExtResource( 26 )
+
+[node name="OutlineLeft" type="Sprite" parent="."]
+position = Vector2( 44.6673, 91.636 )
+z_index = 10
+texture = ExtResource( 25 )
 
 [node name="Palette" type="Sprite" parent="."]
 position = Vector2( -156, 8 )
@@ -76,6 +129,16 @@ texture = ExtResource( 15 )
 centered = false
 script = ExtResource( 9 )
 
+[node name="OutlineSlots" type="Sprite" parent="."]
+position = Vector2( 192.917, 93.3172 )
+z_index = 10
+texture = ExtResource( 23 )
+
+[node name="OutlinePalette" type="Sprite" parent="."]
+position = Vector2( -158.48, 6.57938 )
+texture = ExtResource( 24 )
+centered = false
+
 [node name="LeftSlot" type="Sprite" parent="."]
 position = Vector2( 8.36797, 8 )
 texture = ExtResource( 10 )
@@ -94,6 +157,12 @@ z_index = 5
 [node name="Play" type="Sprite" parent="."]
 position = Vector2( -107.348, 102.723 )
 texture = ExtResource( 11 )
+centered = false
+script = ExtResource( 9 )
+
+[node name="Step" type="Sprite" parent="."]
+position = Vector2( -106.807, 139.986 )
+texture = ExtResource( 29 )
 centered = false
 script = ExtResource( 9 )
 
@@ -128,6 +197,400 @@ which = 4
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="Tutorial" type="Control" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_top = -40.0
+margin_right = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial_1" type="Label" parent="CanvasLayer/Tutorial"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -327.017
+margin_top = -438.993
+margin_right = 352.983
+margin_bottom = -203.993
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+text = "Hello! Welcome to <Game Name>. 
+This tutorial will teach you how to play!
+
+By the way, click and drag the mouse to move
+the camera.
+
+Press space to continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial_2" type="Label" parent="CanvasLayer/Tutorial"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -301.297
+margin_top = -389.393
+margin_right = 321.703
+margin_bottom = -222.393
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+text = "Your task is to program robots to push
+packages to their destinations. However,
+there's a catch!
+
+Press space to continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial_3" type="Label" parent="CanvasLayer/Tutorial"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -302.631
+margin_top = -389.295
+margin_right = 363.369
+margin_bottom = -222.295
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+text = "Each robot can only execute a repeating
+loop of instructions. So it won't usually be
+possible to use a straightforward solution.
+
+Press space to continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial_4" type="Label" parent="CanvasLayer/Tutorial"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -343.359
+margin_top = -391.228
+margin_right = 396.641
+margin_bottom = -224.228
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+text = "However, this first example is not too bad. We
+need to tell the robot to move straight and push
+the box onto the checkboard goal square.
+
+Press space to continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial_5" type="Label" parent="CanvasLayer/Tutorial"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -323.569
+margin_top = -462.308
+margin_right = 357.431
+margin_bottom = -227.308
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+text = "This panel is the \"instruction palette.\"
+
+It contains instructions you can use
+with the robot. You can use as many
+of each instruction as you want.
+
+Press space to continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial_6" type="Label" parent="CanvasLayer/Tutorial"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -331.893
+margin_top = -458.741
+margin_right = 349.107
+margin_bottom = -223.741
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+text = "This panel contains the program for each
+robot. You can drag instructions from the
+palette to this panel to program the robot.
+you can drag instructions away from this
+panel to erase them.
+
+Press space to continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial_7" type="Label" parent="CanvasLayer/Tutorial"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -331.893
+margin_top = -525.336
+margin_right = 349.107
+margin_bottom = -222.336
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+text = "Each number corresponds to the robot with
+that number on screen. The arrows next to
+the numbers let you change the robot's
+starting orientation.
+
+At somepoint you may be expected to handle
+five separate robots!
+
+Press space to continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial_8" type="Label" parent="CanvasLayer/Tutorial"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -385.408
+margin_top = -425.443
+margin_right = 406.592
+margin_bottom = -122.443
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+text = "Once you are done programming the robots,
+you can push this button to run your
+program. you can also push the \"step\" button to run
+your program one step at a time.
+
+Press space to continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial_9" type="Label" parent="CanvasLayer/Tutorial"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -378.272
+margin_top = -323.171
+margin_right = 413.728
+margin_bottom = -20.1711
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+text = "This instruction moves the robot forward.
+
+Press space to continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial_10" type="Label" parent="CanvasLayer/Tutorial"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -388.975
+margin_top = -389.767
+margin_right = 403.025
+margin_bottom = -86.7667
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+text = "This instruction moves the robot backwards.
+
+That's it for now! See you in the next puzzle!
+
+Press space to continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial_11" type="Label" parent="CanvasLayer/Tutorial"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -222.639
+margin_top = -310.307
+margin_right = 569.36
+margin_bottom = -7.30695
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+text = "Welcome to the second level!
+
+Press space to continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial_12" type="Label" parent="CanvasLayer/Tutorial"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -353.881
+margin_top = -382.011
+margin_right = 365.119
+margin_bottom = -79.0109
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+text = "Here moving straight is not going to be enough.
+
+Thankfully, there's more that we can do.
+
+Press space to continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial_13" type="Label" parent="CanvasLayer/Tutorial"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -371.892
+margin_top = -442.4
+margin_right = 366.108
+margin_bottom = -139.4
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+text = "First, you might notice that your robot is not
+facing down, even though it needs to move down.
+
+Try pressing this circle to change its starting
+orientation.
+
+Press space to continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial_14" type="Label" parent="CanvasLayer/Tutorial"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -366.714
+margin_top = -374.654
+margin_right = 383.286
+margin_bottom = -71.6541
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+text = "Now that it's facing the right way, you'll have
+to figure out a way to create a 5-instruction loop
+that gets the robot all the way around the circle.
+
+Press space to continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial_15" type="Label" parent="CanvasLayer/Tutorial"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -350.405
+margin_top = -408.189
+margin_right = 334.595
+margin_bottom = -105.189
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+text = "Conveniently, you have some ways to rotate
+your robot.
+
+This instruction rotates the robot left.
+
+Press space to continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial_16" type="Label" parent="CanvasLayer/Tutorial"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -337.594
+margin_top = -307.0
+margin_right = 304.406
+margin_bottom = -4.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+text = "This instruction rotates the robot right.
+
+Press space to continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial_17" type="Label" parent="CanvasLayer/Tutorial"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -359.0
+margin_top = -304.622
+margin_right = 353.0
+margin_bottom = -1.62158
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+text = "This instruction rotates the robot 180 degrees.
+
+Press space to continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial_18" type="Label" parent="CanvasLayer/Tutorial"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -267.064
+margin_top = -306.505
+margin_right = 251.936
+margin_bottom = -3.50513
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+text = "That's it for this puzzle! Good luck!
+
+Press space to continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TextureButton" type="TextureButton" parent="CanvasLayer"]
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -154,6 +617,37 @@ text = "Back"
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Tutorial_REFERENCE" type="ColorRect" parent="CanvasLayer"]
+visible = false
+margin_left = -1.0
+margin_top = 399.0
+margin_right = 1118.0
+margin_bottom = 599.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pickup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+
+[node name="Place" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 20 )
+
+[node name="Throwaway" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 21 )
+
+[node name="Rotation" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 22 )
+
+[node name="OutlinePlay" type="Sprite" parent="."]
+visible = false
+position = Vector2( -76.867, 116.809 )
+texture = ExtResource( 27 )
+
+[node name="OutlineRot" type="Sprite" parent="."]
+position = Vector2( 60.7907, 24.2056 )
+texture = ExtResource( 28 )
 [connection signal="clicked" from="Palette/Foam" to="." method="_on_new_foam"]
 [connection signal="clicked" from="Palette/Right" to="." method="_on_new_right"]
 [connection signal="clicked" from="Palette/Left" to="." method="_on_new_left"]
@@ -161,6 +655,7 @@ __meta__ = {
 [connection signal="clicked" from="Palette/Backward" to="." method="_on_new_backward"]
 [connection signal="clicked" from="Palette/Spin" to="." method="_on_new_spin"]
 [connection signal="clicked" from="Play" to="." method="_on_play"]
+[connection signal="clicked" from="Step" to="." method="_on_step"]
 [connection signal="alert_rotate" from="Rot0" to="." method="_on_alert_rotate"]
 [connection signal="alert_rotate" from="Rot1" to="." method="_on_alert_rotate"]
 [connection signal="alert_rotate" from="Rot2" to="." method="_on_alert_rotate"]

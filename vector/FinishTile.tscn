@@ -204,6 +204,6 @@ animations = [ {
 
 [node name="FinishTile" type="AnimatedSprite"]
 frames = SubResource( 1 )
-frame = 9
+frame = 37
 playing = true
 centered = false
