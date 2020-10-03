@@ -2,7 +2,7 @@ extends Node2D
 
 var is_playing = false
 
-var TIME_PER_TICK = 0.2
+var TIME_PER_TICK = 0.1
 var tick_timer = 0
 
 var AIR
@@ -10,8 +10,8 @@ var WALL
 
 var grid_ref = []
 var goals = [Vector2(4, 0)]
-var width = 5
-var height = 5
+var width = 6
+var height = 6
 
 var robots = []
 
@@ -19,15 +19,34 @@ func _ready():
 	AIR = Node2D.new()
 	WALL = Node2D.new()
 	
-	grid_ref = [get_node("../WheelBot"), WALL, WALL, WALL, AIR, AIR, WALL, WALL, WALL, AIR, AIR, WALL, WALL, WALL, AIR, AIR, WALL, WALL, WALL, get_node("../Node2D"), AIR, AIR, AIR, AIR, AIR]
+	grid_ref = [get_node("../WheelBot"), WALL, WALL, WALL, AIR, WALL,
+		AIR, WALL, WALL, WALL, AIR, WALL,
+		AIR, WALL, WALL, WALL, get_node("../Node2D"), WALL,
+		AIR, WALL, WALL, WALL, AIR, WALL,
+		AIR, AIR, AIR, AIR, AIR, AIR,
+		AIR, WALL, WALL, WALL, WALL, WALL]
 
 	robots = [get_node("../WheelBot")]
+	
+	get_node("../Node2D").grid_x = 4
+	get_node("../Node2D").grid_y = 2
 	
 func get_grid_ref(x, y):
 	return grid_ref[y * width + x]
 	
 func set_grid_ref(x, y, f):
 	grid_ref[y * width + x] = f
+	
+func is_air(x, y):
+	if x < 0:
+		return false
+	if y < 0:
+		return false
+	if x >= width:
+		return false
+	if y >= height:
+		return false
+	return get_grid_ref(x, y) == AIR
 	
 func is_movable(obj):
 	if obj == null:
@@ -49,12 +68,18 @@ func move_object_right(x, y):
 	if x0 >= width:
 		return
 		
+	var air = false
+		
 	while x0 < width:
 		if get_grid_ref(x0, y) == AIR:
+			air = true
 			break
 		elif not is_movable(get_grid_ref(x0, y)):
 			return
 		x0 += 1
+		
+	if not air:
+		return
 			
 	# Now we know that we can move, properly
 	while x0 != x:	
@@ -72,12 +97,18 @@ func move_object_left(x, y):
 	if x0 < 0:
 		return
 		
+	var air = false
+		
 	while x0 >= 0:
 		if get_grid_ref(x0, y) == AIR:
+			air = true
 			break
 		elif not is_movable(get_grid_ref(x0, y)):
 			return
 		x0 -= 1
+		
+	if not air:
+		return
 			
 	# Now we know that we can move, properly
 	while x0 != x:	
@@ -95,12 +126,18 @@ func move_object_down(x, y):
 	if y0 >= height:
 		return
 		
+	var air = false
+		
 	while y0 < height:
 		if get_grid_ref(x, y0) == AIR:
+			air = true
 			break
 		elif not is_movable(get_grid_ref(x, y0)):
 			return
 		y0 += 1
+		
+	if not air:
+		return
 			
 	# Now we know that we can move, properly
 	while y0 != y:	
@@ -118,12 +155,18 @@ func move_object_up(x, y):
 	if y0 < 0:
 		return
 		
+	var air = false
+		
 	while y0 >= 0:
 		if get_grid_ref(x, y0) == AIR:
+			air = true
 			break
 		elif not is_movable(get_grid_ref(x, y0)):
 			return
 		y0 -= 1
+		
+	if not air:
+		return
 			
 	# Now we know that we can move, properly
 	while y0 != y:	

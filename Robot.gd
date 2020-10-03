@@ -1,6 +1,7 @@
 extends "res://PuzzleEntity.gd"
 
 onready var anim = $AnimationPlayer
+onready var Foam = load("res://Foam.tscn")
 
 enum Dir {
 	Left,
@@ -12,26 +13,27 @@ enum Dir {
 enum Ins {
 	Forward,
 	Left,
-	Right
+	Right,
+	Foam
 }
 
-var direction = Dir.Right
+var direction = Dir.Down
 
 func _ready():
-	instructions = [Ins.Forward, Ins.Forward, Ins.Left]
+	instructions = [Ins.Foam, Ins.Forward, Ins.Left]
 
 func is_movable():
 	return false
 	
-func anim_idle():
-	if direction == Dir.Right:
-		anim.play("RightIdle")
-	if direction == Dir.Left:
-		anim.play("LeftIdle")
-	if direction == Dir.Up:
-		anim.play("UpIdle")
+func get_target_direction():
 	if direction == Dir.Down:
-		anim.play("DownIdle")
+		return 0
+	if direction == Dir.Right:
+		return 270
+	if direction == Dir.Up:
+		return 180
+	if direction == Dir.Left:
+		return 90
 	
 func rotate_left():
 	if direction == Dir.Right:
@@ -55,43 +57,55 @@ func rotate_right():
 	
 func handle_instruction(i, grid):
 	if i == null:
-		anim_idle()
 		return
 
 	if i == Ins.Forward:
 		if direction == Dir.Right:
 			grid.move_object_right(grid_x, grid_y)
-			anim.play("RightIdle")
 		elif direction == Dir.Left:
 			grid.move_object_left(grid_x, grid_y)
-			anim.play("LeftIdle")
 		elif direction == Dir.Up:
 			grid.move_object_up(grid_x, grid_y)
-			anim.play("UpIdle")
 		elif direction == Dir.Down:
 			grid.move_object_down(grid_x, grid_y)
-			anim.play("DownIdle")
 		
 	if i == Ins.Left:
 		rotate_left()
-		anim_idle()
 		
 	if i == Ins.Right:
 		rotate_right()
-		anim_idle()
+		
+	if i == Ins.Foam:
+		var x = grid_x
+		var y = grid_y
+		
+		if direction == Dir.Left:
+			x -= 1
+		if direction == Dir.Right:
+			x += 1
+		if direction == Dir.Down:
+			y += 1
+		if direction == Dir.Up:
+			y -= 1
+			
+		if grid.is_air(x, y):
+			var foam = Foam.instance()
+			foam.grid_x = x
+			foam.grid_y = y
+			foam.position = $Sprite2/FoamSource.global_position + Vector2(-32, -32)
+			foam.initial_target = Vector2(x * 64, y * 64)
+			get_parent().call_deferred("add_child", foam)
+			
+			grid.set_grid_ref(x, y, foam)
 
 func _process(delta):
-	if direction == Dir.Left:
-		$Sprite.flip_h = true
-	else:
-		$Sprite.flip_h = false
-		
-	if direction == Dir.Down:
-		$Sprite.flip_v = true
-	else:
-		$Sprite.flip_v = false
-		
-	if direction == Dir.Down or direction == Dir.Up:
-		$Sprite.frame = 1
-	else:
-		$Sprite.frame = 0
+	var dir = $Sprite2.rotation_degrees
+	var tar = get_target_direction()
+	
+	var dif = tar - dir
+	dif = fmod(dif, 360)
+	
+	if abs(dif) > 180:
+		dif = (sign(dif) * 180) - dif
+	
+	$Sprite2.rotation_degrees += dif * 0.2
