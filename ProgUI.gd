@@ -244,3 +244,5 @@ func _on_alert_rotate(which, angle):
 	
 	coordinator.update_base_rotation(which, dir)
 
+func _on_back():
+	get_node("/root/Root/CanvasLayer/SceneTransition").switch_scene("res://LevelSelect.tscn")

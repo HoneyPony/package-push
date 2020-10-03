@@ -149,6 +149,11 @@ func _ready():
 	ROBOT_FILTER = Node2D.new()
 	
 	if Global.intended_level == 0:
+		current_level = Level.new([Vector2(0, 0)], [Vector2(3, 0)], 7, 1, [
+			1, 1, 1, 1, 1, 1, 2
+		], 5, 1)
+	
+	if Global.intended_level == 1:
 		current_level = Level.new([Vector2(0, 2)], [Vector2(2, 0)], 5, 5, [
 			2, 1, 1, 1, 1,
 			0, 0, 0, 0, 1,
@@ -156,57 +161,128 @@ func _ready():
 			1, 0, 0, 0, 1,
 			1, 1, 1, 1, 1
 		], 5, 1)
+		
 	
-	if Global.intended_level == 1:
+	if Global.intended_level == 2:
+		current_level = Level.new([Vector2(2, 2)], [Vector2(2, 0)], 7, 7, [
+			0, 2, 1, 1, 1, 0, 0,
+			0, 0, 0, 0, 1, 0, 0, 
+			1, 1, 1, 0, 1, 1, 1,
+			1, 0, 0, 0, 0, 0, 1,
+			1, 1, 1, 0, 1, 1, 1,
+			0, 0, 1, 0, 1, 0, 0,
+			0, 0, 1, 1, 1, 0, 0
+		], 9, 1)
+	
+	if Global.intended_level == 3:
 		current_level = Level.new([Vector2(0, 0)], [Vector2(4, 0)], 10, 1, [
 			1, 1, 1, 1, 1, 3, 1, 1, 1, 2
 		], 3, 1) # 3+ x 1
+		
+	if Global.intended_level == 4:
+		current_level = Level.new([Vector2(1, 0), Vector2(4, 4)], [Vector2(4, 1)], 7, 5, [
+			0, 1, 1, 1, 3, 1, 2,
+			0, 0, 0, 0, 1, 0, 0,
+			0, 0, 0, 0, 3, 0, 0,
+			0, 0, 0, 0, 1, 0, 0,
+			0, 0, 0, 0, 1, 0, 0
+		], 3, 2) # 3+ x 1
+
+# Kind of a weird level....
+#		current_level = Level.new([Vector2(2, 4)], [Vector2(4, 1)], 9, 5, [
+#			0, 0, 1, 0, 0, 0, 0, 0, 0,
+#			1, 1, 1, 1, 1, 1, 3, 1, 2,
+#			0, 0, 1, 0, 0, 0, 0, 0, 0,
+#			0, 0, 1, 0, 0, 0, 0, 0, 0,
+#			0, 0, 1, 0, 0, 0, 0, 0, 0,
+#		], 3, 1) # 3+ x 1
 	
-#	current_level = Level.new([Vector2(0, 0)], [Vector2(4, 2)], 6, 6, [
-#		1, 0, 0, 0, 2, 0,
-#		1, 0, 0, 0, 1, 0,
-#		1, 0, 0, 0, 1, 0,
-#		1, 0, 0, 0, 1, 0,
-#		1, 1, 1, 1, 1, 1,
-#		1, 0, 0, 0, 0, 0
-#	]) # 3+ x 1
 
 
+	if Global.intended_level == 5:
+		current_level = Level.new([Vector2(1, 2), Vector2(0, 6), Vector2(5, 7)], [Vector2(1, 4), Vector2(3, 6), Vector2(5, 4)], 6, 8, [
+			0, 0, 0, 0, 0, 2,
+			0, 0, 0, 0, 0, 2,
+			0, 1, 0, 0, 0, 2,
+			0, 1, 0, 0, 0, 1,
+			0, 1, 0, 0, 0, 1,
+			0, 1, 0, 0, 0, 1,
+			1, 1, 1, 1, 1, 1,
+			0, 0, 0, 0, 0, 1
+		], 3, 3)
 
-#	current_level = Level.new([Vector2(0, 4), Vector2(5, 6)], [Vector2(4, 4), Vector2(5, 3)], 9, 7, [
-#		0, 0, 0, 0, 0, 2, 0, 0, 0,
-#		0, 0, 0, 0, 0, 1, 0, 0, 0,
-#		0, 0, 0, 0, 0, 3, 0, 0, 0,
-#		0, 0, 0, 0, 0, 1, 0, 0, 0,
-#		1, 1, 1, 1, 1, 1, 1, 1, 2, 
-#		0, 0, 0, 0, 0, 1, 0, 0, 0,
-#		0, 0, 0, 0, 0, 1, 0, 0, 0
-#	]) # 6 x 2
 
-#	current_level = Level.new([Vector2(0, 5), Vector2(4, 5)], [Vector2(4, 2), Vector2(4, 8)], 5, 11, [
-#		0, 0, 0, 0, 2,
-#		0, 0, 0, 0, 1,
-#		0, 0, 0, 0, 1,
-#		0, 0, 0, 0, 1,
-#		0, 0, 0, 0, 1,
-#		1, 1, 1, 1, 1,
-#		0, 0, 0, 0, 1,
-#		0, 0, 0, 0, 1,
-#		0, 0, 0, 0, 1,
-#		0, 0, 0, 0, 1,
-#		0, 0, 0, 0, 2
-#	]) # 3 x 2
+	if Global.intended_level == 6:
+		current_level = Level.new([Vector2(0, 4), Vector2(5, 6)], [Vector2(4, 4), Vector2(5, 3)], 9, 7, [
+			0, 0, 0, 0, 0, 2, 0, 0, 0,
+			0, 0, 0, 0, 0, 1, 0, 0, 0,
+			0, 0, 0, 0, 0, 3, 0, 0, 0,
+			0, 0, 0, 0, 0, 1, 0, 0, 0,
+			1, 1, 1, 1, 1, 1, 1, 1, 2, 
+			0, 0, 0, 0, 0, 1, 0, 0, 0,
+			0, 0, 0, 0, 0, 1, 0, 0, 0
+		], 6, 2) # 6 x 2
 
-#	current_level = Level.new([Vector2(1, 2), Vector2(0, 6), Vector2(5, 7)], [Vector2(1, 4), Vector2(3, 6), Vector2(5, 4)], 6, 8, [
-#		0, 0, 0, 0, 0, 2,
-#		0, 0, 0, 0, 0, 2,
-#		0, 1, 0, 0, 0, 2,
-#		0, 1, 0, 0, 0, 1,
-#		0, 1, 0, 0, 0, 1,
-#		0, 1, 0, 0, 0, 1,
-#		1, 1, 1, 1, 1, 1,
-#		0, 0, 0, 0, 0, 1
-#	], 3, 3)
+	if Global.intended_level == 7:
+		current_level = Level.new([Vector2(0, 5), Vector2(4, 5)], [Vector2(4, 2), Vector2(4, 8)], 5, 11, [
+			0, 0, 0, 0, 2,
+			0, 0, 0, 0, 1,
+			0, 0, 0, 0, 1,
+			0, 0, 0, 0, 1,
+			0, 0, 0, 0, 1,
+			1, 1, 1, 1, 1,
+			0, 0, 0, 0, 1,
+			0, 0, 0, 0, 1,
+			0, 0, 0, 0, 1,
+			0, 0, 0, 0, 1,
+			0, 0, 0, 0, 2
+		], 3, 2) # 3 x 2
+		
+	if Global.intended_level == 8:
+		current_level = Level.new([Vector2(1, 2), Vector2(0, 6), Vector2(5, 7)], [Vector2(1, 4), Vector2(2, 6), Vector2(5, 4)], 6, 8, [
+			0, 0, 0, 0, 0, 0,
+			0, 0, 0, 0, 0, 0,
+			0, 1, 0, 0, 0, 2,
+			0, 1, 0, 0, 0, 1,
+			0, 1, 0, 0, 0, 1,
+			0, 1, 0, 0, 0, 1,
+			1, 1, 1, 2, 2, 1,
+			0, 0, 0, 0, 0, 1
+		], 3, 3)
+
+
+	if Global.intended_level == 9:
+		current_level = Level.new([Vector2(0, 0), Vector2(11, 0)], [Vector2(2, 0), Vector2(9, 0)], 12, 1, [
+			1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1
+		], 3, 2) # 3+ x 1
+	
+		
+	if Global.intended_level == 10:
+		current_level = Level.new([Vector2(0, 0)], [Vector2(1, 0), Vector2(1, 1)], 7, 2, [
+			1, 1, 1, 1, 1, 1, 2,
+			1, 1, 1, 1, 1, 1, 2
+		], 9, 1)
+		
+	if Global.intended_level == 11:
+		current_level = Level.new([Vector2(0, 0)], [Vector2(4, 2)], 6, 6, [
+			1, 0, 0, 0, 2, 0,
+			1, 0, 0, 0, 1, 0,
+			1, 0, 0, 0, 1, 0,
+			1, 0, 0, 0, 1, 0,
+			1, 1, 1, 1, 1, 1,
+			1, 0, 0, 0, 0, 0
+		], 3, 1) # 3+ x 1
+	
+		
+	if Global.intended_level == 1000:
+		current_level = Level.new([Vector2(1, 0), Vector2(0, 4), Vector2(4, 5), Vector2(5, 1)], [Vector2(3, 1), Vector2(1, 2), Vector2(2, 4), Vector2(4, 3)], 6, 6, [
+			0, 1, 0, 0, 2, 0,
+			2, 1, 3, 1, 1, 1,
+			0, 1, 0, 0, 3, 0,
+			0, 3, 0, 0, 1, 0,
+			1, 1, 1, 3, 1, 2,
+			0, 2, 0, 0, 1, 0
+		], 8, 4)
 	
 	load_level(current_level)
 	
@@ -405,7 +481,7 @@ func tick():
 	
 	for g in goals:
 		var obj = get_grid_ref(g.x, g.y)
-		if obj == AIR or obj == WALL:
+		if obj == AIR or obj == WALL or obj == ROBOT_FILTER:
 			return
 		
 		if not obj.is_package():
