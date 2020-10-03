@@ -24,8 +24,8 @@ func update_grid(x, y):
 	grid_y = y
 	world_position = Vector2(x * 64, y * 64)
 	
-	speed = (world_position - position) * (1 / 0.1)
-	time = 0.1
+	speed = (world_position - position) * (1 / 0.2)
+	time = 0.2
 
 func is_movable():
 	return true

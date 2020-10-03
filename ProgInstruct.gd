@@ -1,18 +1,17 @@
 extends Sprite
 
+var cell
+var instruction
+
 signal clicked
 
 func _process(delta):
 	var mouse = get_global_mouse_position()
 	
-	var size = texture.get_size()
+	var size = Vector2(40, 30)
 	
 	var rect = Rect2(global_position, size)
 	
 	if rect.has_point(mouse):
-		modulate = Color(1.1, 1.1, 1.1, 1.0)
-		
 		if Input.is_action_just_pressed("mouse"):
-			emit_signal("clicked")
-	else:
-		modulate = Color(1, 1, 1, 1)
+			emit_signal("clicked", self)

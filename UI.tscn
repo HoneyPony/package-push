@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://vector/Prog/BG.svg" type="Texture" id=1]
 [ext_resource path="res://vector/Prog/Forward.svg" type="Texture" id=2]
@@ -9,46 +9,121 @@
 [ext_resource path="res://vector/Prog/Slot2.svg" type="Texture" id=7]
 [ext_resource path="res://ProgUI.gd" type="Script" id=8]
 [ext_resource path="res://PaletteButton.gd" type="Script" id=9]
+[ext_resource path="res://vector/Prog/LeftSlot.svg" type="Texture" id=10]
+[ext_resource path="res://vector/Prog/Play.svg" type="Texture" id=11]
+[ext_resource path="res://vector/Prog/RobotRotIcon.svg" type="Texture" id=12]
+[ext_resource path="res://RobotRotIcon.gd" type="Script" id=13]
+[ext_resource path="res://vector/Prog/Backward.svg" type="Texture" id=14]
+[ext_resource path="res://vector/Prog/Spin.svg" type="Texture" id=15]
 
 [node name="UI" type="Node2D"]
 script = ExtResource( 8 )
 
 [node name="BG" type="Sprite" parent="."]
-position = Vector2( 268.344, 90.4524 )
-scale = Vector2( 13.3945, 1 )
+position = Vector2( -3246.71, 0 )
+scale = Vector2( 176.697, 1.111 )
 texture = ExtResource( 1 )
+centered = false
 
 [node name="Palette" type="Sprite" parent="."]
-position = Vector2( 81.191, 46.468 )
+position = Vector2( -156, 8 )
 texture = ExtResource( 4 )
+centered = false
 
 [node name="Foam" type="Sprite" parent="Palette"]
-position = Vector2( -20.4794, 3.32734 )
+position = Vector2( 100.364, 41.5033 )
 texture = ExtResource( 3 )
 centered = false
 script = ExtResource( 9 )
 
 [node name="Right" type="Sprite" parent="Palette"]
-position = Vector2( 25.2373, -32.6671 )
+position = Vector2( 54.3402, 42.0462 )
 texture = ExtResource( 6 )
 centered = false
+script = ExtResource( 9 )
 
 [node name="Left" type="Sprite" parent="Palette"]
-position = Vector2( -20.7038, -32.4638 )
+position = Vector2( 54.7146, 7.24772 )
 texture = ExtResource( 5 )
 centered = false
+script = ExtResource( 9 )
 
 [node name="Forward" type="Sprite" parent="Palette"]
-position = Vector2( -66.1147, -32.1805 )
+position = Vector2( 9.3038, 7.53102 )
 texture = ExtResource( 2 )
+centered = false
+script = ExtResource( 9 )
+
+[node name="Backward" type="Sprite" parent="Palette"]
+position = Vector2( 9.8992, 41.9861 )
+texture = ExtResource( 14 )
+centered = false
+script = ExtResource( 9 )
+
+[node name="Spin" type="Sprite" parent="Palette"]
+position = Vector2( 101.114, 7.50847 )
+texture = ExtResource( 15 )
+centered = false
+script = ExtResource( 9 )
+
+[node name="LeftSlot" type="Sprite" parent="."]
+position = Vector2( 8.36797, 8 )
+texture = ExtResource( 10 )
 centered = false
 
 [node name="Slots" type="Sprite" parent="."]
-position = Vector2( 208.165, 5.43094 )
+position = Vector2( 78.2527, 8 )
 texture = ExtResource( 7 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 322, 170 )
 
 [node name="Cursor" type="Sprite" parent="."]
+z_index = 5
+
+[node name="Play" type="Sprite" parent="."]
+position = Vector2( -107.348, 102.723 )
+texture = ExtResource( 11 )
+centered = false
+script = ExtResource( 9 )
+
+[node name="Rot0" type="Sprite" parent="."]
+position = Vector2( 61.0843, 24.7995 )
+texture = ExtResource( 12 )
+script = ExtResource( 13 )
+
+[node name="Rot1" type="Sprite" parent="."]
+position = Vector2( 61.0843, 58.8379 )
+texture = ExtResource( 12 )
+script = ExtResource( 13 )
+which = 1
+
+[node name="Rot2" type="Sprite" parent="."]
+position = Vector2( 61.0843, 91.8752 )
+texture = ExtResource( 12 )
+script = ExtResource( 13 )
+which = 2
+
+[node name="Rot3" type="Sprite" parent="."]
+position = Vector2( 61.0843, 127.248 )
+texture = ExtResource( 12 )
+script = ExtResource( 13 )
+which = 3
+
+[node name="Rot4" type="Sprite" parent="."]
+position = Vector2( 61.0843, 161.287 )
+texture = ExtResource( 12 )
+script = ExtResource( 13 )
+which = 4
 [connection signal="clicked" from="Palette/Foam" to="." method="_on_new_foam"]
+[connection signal="clicked" from="Palette/Right" to="." method="_on_new_right"]
+[connection signal="clicked" from="Palette/Left" to="." method="_on_new_left"]
+[connection signal="clicked" from="Palette/Forward" to="." method="_on_new_forward"]
+[connection signal="clicked" from="Palette/Backward" to="." method="_on_new_backward"]
+[connection signal="clicked" from="Palette/Spin" to="." method="_on_new_spin"]
+[connection signal="clicked" from="Play" to="." method="_on_play"]
+[connection signal="alert_rotate" from="Rot0" to="." method="_on_alert_rotate"]
+[connection signal="alert_rotate" from="Rot1" to="." method="_on_alert_rotate"]
+[connection signal="alert_rotate" from="Rot2" to="." method="_on_alert_rotate"]
+[connection signal="alert_rotate" from="Rot3" to="." method="_on_alert_rotate"]
+[connection signal="alert_rotate" from="Rot4" to="." method="_on_alert_rotate"]

@@ -12,15 +12,17 @@ enum Dir {
 
 enum Ins {
 	Forward,
+	Backward,
 	Left,
 	Right,
-	Foam
+	Foam,
+	Spin
 }
 
-var direction = Dir.Down
+var direction = Dir.Right
 
 func _ready():
-	instructions = [Ins.Foam, Ins.Forward, Ins.Left]
+	instructions = []
 
 func is_movable():
 	return false
@@ -34,6 +36,8 @@ func get_target_direction():
 		return 180
 	if direction == Dir.Left:
 		return 90
+		
+	return 270
 	
 func rotate_left():
 	if direction == Dir.Right:
@@ -68,11 +72,25 @@ func handle_instruction(i, grid):
 			grid.move_object_up(grid_x, grid_y)
 		elif direction == Dir.Down:
 			grid.move_object_down(grid_x, grid_y)
+			
+	if i == Ins.Backward:
+		if direction == Dir.Left:
+			grid.move_object_right(grid_x, grid_y)
+		elif direction == Dir.Right:
+			grid.move_object_left(grid_x, grid_y)
+		elif direction == Dir.Down:
+			grid.move_object_up(grid_x, grid_y)
+		elif direction == Dir.Up:
+			grid.move_object_down(grid_x, grid_y)
 		
 	if i == Ins.Left:
 		rotate_left()
 		
 	if i == Ins.Right:
+		rotate_right()
+		
+	if i == Ins.Spin:
+		rotate_right()
 		rotate_right()
 		
 	if i == Ins.Foam:
@@ -97,6 +115,9 @@ func handle_instruction(i, grid):
 			get_parent().call_deferred("add_child", foam)
 			
 			grid.set_grid_ref(x, y, foam)
+			
+func set_dir_instant():
+	$Sprite2.rotation_degrees = fmod(get_target_direction(), 360)
 
 func _process(delta):
 	var dir = $Sprite2.rotation_degrees
@@ -108,4 +129,15 @@ func _process(delta):
 	if abs(dif) > 180:
 		dif = (sign(dif) * 180) - dif
 	
-	$Sprite2.rotation_degrees += dif * 0.2
+	var final_tar = dir + dif
+	var now_sign = sign($Sprite2.rotation_degrees - final_tar)
+	
+	$Sprite2.rotation_degrees += 900 * delta * sign(dif)
+	
+	if sign($Sprite2.rotation_degrees - final_tar) != now_sign:
+		$Sprite2.rotation_degrees = final_tar
+		$Sprite2.rotation_degrees = fmod($Sprite2.rotation_degrees, 360)
+		
+	if abs($Sprite2.rotation_degrees - final_tar) < 900 * delta * 2:
+		$Sprite2.rotation_degrees = final_tar
+		$Sprite2.rotation_degrees = fmod($Sprite2.rotation_degrees, 360)

@@ -2,11 +2,12 @@ extends Node2D
 
 var is_playing = false
 
-var TIME_PER_TICK = 0.1
+var TIME_PER_TICK = 0.2
 var tick_timer = 0
 
 var AIR
 var WALL
+var ROBOT_FILTER
 
 var grid_ref = []
 var goals = [Vector2(4, 0)]
@@ -15,21 +16,195 @@ var height = 6
 
 var robots = []
 
+onready var the_ui = get_node("../Camera/CanvasLayer/UI")
+
+class Level:
+	var bots = []
+	var boxes = []
+	
+	var width
+	var height
+	var grid
+	
+	var columns
+	var rows
+	
+	func _init(bots_, boxes_, width_, height_, grid_, columns_, rows_):
+		bots = bots_
+		boxes = boxes_
+		width = width_
+		height = height_
+		grid = grid_
+		columns = columns_
+		rows = rows_
+		
+var current_level: Level
+var entity_parent = null
+
+var Robot = preload("res://Robot.tscn")
+var Package = preload("res://Package.tscn")
+
+var FinishTile = preload("res://vector/FinishTile.tscn")
+var FilterTile = preload("res://vector/FilterTile.tscn")
+
+func reload_tile(x, y):
+	var index = y * width + x
+	
+	grid_ref[index] = level_to_grid_ref(current_level.grid[index])
+	
+func level_to_grid_ref(i):
+	if i == 0:
+		return WALL
+	elif i == 3:
+		return ROBOT_FILTER
+	else:
+		return AIR
+
+func place_object(obj, pos):
+	obj.grid_x = pos.x
+	obj.grid_y = pos.y
+	obj.position = pos * 64
+	set_grid_ref(pos.x, pos.y, obj)
+	
+func reload_level(lvl: Level):
+	if entity_parent != null:
+		entity_parent.queue_free()
+		entity_parent = null
+		
+	robots.clear()
+		
+	entity_parent = Node2D.new()
+	get_parent().call_deferred("add_child", entity_parent)
+	
+	width = lvl.width
+	height = lvl.height
+	
+	grid_ref.clear()
+	for i in lvl.grid:
+		grid_ref.append(level_to_grid_ref(i))
+	
+	var bot_index = 0
+	for r in lvl.bots:
+		var bot = Robot.instance()
+		entity_parent.add_child(bot)
+		place_object(bot, r)
+		robots.append(bot)
+		
+		bot.direction = the_ui.get_robot_direction(bot_index)
+		bot.set_dir_instant()
+		bot_index += 1
+		
+	for p in lvl.boxes:
+		var pkg = Package.instance()
+		entity_parent.add_child(pkg)
+		place_object(pkg, p)
+		
+func map_to_tile(grid_num):
+	return grid_num - 1
+	
+func fake_tile(type, x, y):
+	var t = type.instance()
+	t.position = Vector2(x, y) * 64
+	get_node("../TileMap").call_deferred("add_child", t)
+		
+func load_level(lvl: Level):
+	var tilemap = get_node("../TileMap")
+	
+	tilemap.clear()
+	
+	width = lvl.width
+	height = lvl.height
+	
+	var x = 0
+	var y = 0
+	for i in lvl.grid:
+		var cell = map_to_tile(i)
+		
+		if i == 2:
+			fake_tile(FinishTile, x, y)
+			cell = -1
+			
+		if i == 3:
+			fake_tile(FilterTile, x, y)
+			cell = 0
+		
+		tilemap.set_cell(x, y, cell)
+		x += 1
+		if x >= width:
+			x = 0
+			y += 1
+	
+	reload_level(lvl)
+	
+	the_ui.columns = lvl.columns
+	the_ui.rows = lvl.rows
+	the_ui.call_deferred("setup")
+	
+func reload_current_level():
+	reload_level(current_level)
+	
 func _ready():
 	AIR = Node2D.new()
 	WALL = Node2D.new()
+	ROBOT_FILTER = Node2D.new()
 	
-	grid_ref = [get_node("../WheelBot"), WALL, WALL, WALL, AIR, WALL,
-		AIR, WALL, WALL, WALL, AIR, WALL,
-		AIR, WALL, WALL, WALL, get_node("../Node2D"), WALL,
-		AIR, WALL, WALL, WALL, AIR, WALL,
-		AIR, AIR, AIR, AIR, AIR, AIR,
-		AIR, WALL, WALL, WALL, WALL, WALL]
+	current_level = Level.new([Vector2(0, 2)], [Vector2(2, 0)], 5, 5, [
+		2, 1, 1, 1, 1,
+		0, 0, 0, 0, 1,
+		1, 0, 0, 0, 1,
+		1, 0, 0, 0, 1,
+		1, 1, 1, 1, 1
+	], 5, 1)
+	
+#	current_level = Level.new([Vector2(0, 0)], [Vector2(4, 2)], 6, 6, [
+#		1, 0, 0, 0, 2, 0,
+#		1, 0, 0, 0, 1, 0,
+#		1, 0, 0, 0, 1, 0,
+#		1, 0, 0, 0, 1, 0,
+#		1, 1, 1, 1, 1, 1,
+#		1, 0, 0, 0, 0, 0
+#	]) # 3+ x 1
 
-	robots = [get_node("../WheelBot")]
+#	current_level = Level.new([Vector2(0, 0)], [Vector2(4, 0)], 10, 1, [
+#		1, 1, 1, 1, 1, 3, 1, 1, 1, 2
+#	]) # 3+ x 1
+
+#	current_level = Level.new([Vector2(0, 4), Vector2(5, 6)], [Vector2(4, 4), Vector2(5, 3)], 9, 7, [
+#		0, 0, 0, 0, 0, 2, 0, 0, 0,
+#		0, 0, 0, 0, 0, 1, 0, 0, 0,
+#		0, 0, 0, 0, 0, 3, 0, 0, 0,
+#		0, 0, 0, 0, 0, 1, 0, 0, 0,
+#		1, 1, 1, 1, 1, 1, 1, 1, 2, 
+#		0, 0, 0, 0, 0, 1, 0, 0, 0,
+#		0, 0, 0, 0, 0, 1, 0, 0, 0
+#	]) # 6 x 2
+
+#	current_level = Level.new([Vector2(0, 5), Vector2(4, 5)], [Vector2(4, 2), Vector2(4, 8)], 5, 11, [
+#		0, 0, 0, 0, 2,
+#		0, 0, 0, 0, 1,
+#		0, 0, 0, 0, 1,
+#		0, 0, 0, 0, 1,
+#		0, 0, 0, 0, 1,
+#		1, 1, 1, 1, 1,
+#		0, 0, 0, 0, 1,
+#		0, 0, 0, 0, 1,
+#		0, 0, 0, 0, 1,
+#		0, 0, 0, 0, 1,
+#		0, 0, 0, 0, 2
+#	]) # 3 x 2
+
+#	current_level = Level.new([Vector2(1, 2), Vector2(0, 6), Vector2(5, 7)], [Vector2(1, 4), Vector2(3, 6), Vector2(5, 4)], 6, 8, [
+#		0, 0, 0, 0, 0, 2,
+#		0, 0, 0, 0, 0, 2,
+#		0, 1, 0, 0, 0, 2,
+#		0, 1, 0, 0, 0, 1,
+#		0, 1, 0, 0, 0, 1,
+#		0, 1, 0, 0, 0, 1,
+#		1, 1, 1, 1, 1, 1,
+#		0, 0, 0, 0, 0, 1
+#	], 3, 3)
 	
-	get_node("../Node2D").grid_x = 4
-	get_node("../Node2D").grid_y = 2
+	load_level(current_level)
 	
 func get_grid_ref(x, y):
 	return grid_ref[y * width + x]
@@ -37,7 +212,10 @@ func get_grid_ref(x, y):
 func set_grid_ref(x, y, f):
 	grid_ref[y * width + x] = f
 	
-func is_air(x, y):
+func get_grid_source(x, y):
+	return current_level.grid[y * width + x]
+	
+func is_air(x, y, robot_filter_is_air = true):
 	if x < 0:
 		return false
 	if y < 0:
@@ -46,7 +224,13 @@ func is_air(x, y):
 		return false
 	if y >= height:
 		return false
-	return get_grid_ref(x, y) == AIR
+	var ref = get_grid_ref(x, y)
+	if ref == AIR:
+		return true
+	if robot_filter_is_air:
+		if ref == ROBOT_FILTER:
+			return true
+	return false
 	
 func is_movable(obj):
 	if obj == null:
@@ -55,6 +239,8 @@ func is_movable(obj):
 		return false
 	if obj == WALL:
 		return false
+	if obj == ROBOT_FILTER:
+		return false
 	if obj.is_movable():
 		return true
 	return false
@@ -62,16 +248,30 @@ func is_movable(obj):
 func is_usable(f):
 	return f != null and f != AIR and f != WALL
 	
+func robot_filter_condition(x, y, x0, y0):
+	var tile: Node2D = get_grid_ref(x, y)
+	if tile.get_groups().find("Robots") == -1:
+		return false
+		
+	if get_grid_source(x0, y0) == 3:
+		return true
+		
+	return false
+		
+	
 func move_object_right(x, y):
 	var x0 = x + 1
 	
 	if x0 >= width:
 		return
 		
+	if robot_filter_condition(x, y, x0, y):
+		return
+		
 	var air = false
 		
 	while x0 < width:
-		if get_grid_ref(x0, y) == AIR:
+		if is_air(x0, y):
 			air = true
 			break
 		elif not is_movable(get_grid_ref(x0, y)):
@@ -89,7 +289,8 @@ func move_object_right(x, y):
 		set_grid_ref(x0, y, gf)
 		x0 -= 1
 		
-	set_grid_ref(x, y, AIR)
+	#set_grid_ref(x, y, AIR)
+	reload_tile(x, y)
 	
 func move_object_left(x, y):
 	var x0 = x - 1
@@ -97,10 +298,13 @@ func move_object_left(x, y):
 	if x0 < 0:
 		return
 		
+	if robot_filter_condition(x, y, x0, y):
+		return
+		
 	var air = false
 		
 	while x0 >= 0:
-		if get_grid_ref(x0, y) == AIR:
+		if is_air(x0, y):
 			air = true
 			break
 		elif not is_movable(get_grid_ref(x0, y)):
@@ -118,7 +322,8 @@ func move_object_left(x, y):
 		set_grid_ref(x0, y, gf)
 		x0 += 1
 		
-	set_grid_ref(x, y, AIR)
+	#set_grid_ref(x, y, AIR)
+	reload_tile(x, y)
 	
 func move_object_down(x, y):
 	var y0 = y + 1
@@ -126,10 +331,13 @@ func move_object_down(x, y):
 	if y0 >= height:
 		return
 		
+	if robot_filter_condition(x, y, x, y0):
+		return
+		
 	var air = false
 		
 	while y0 < height:
-		if get_grid_ref(x, y0) == AIR:
+		if is_air(x, y0):
 			air = true
 			break
 		elif not is_movable(get_grid_ref(x, y0)):
@@ -147,7 +355,8 @@ func move_object_down(x, y):
 		set_grid_ref(x, y0, gf)
 		y0 -= 1
 		
-	set_grid_ref(x, y, AIR)
+	#set_grid_ref(x, y, AIR)
+	reload_tile(x, y)
 		
 func move_object_up(x, y):
 	var y0 = y - 1
@@ -155,10 +364,13 @@ func move_object_up(x, y):
 	if y0 < 0:
 		return
 		
+	if robot_filter_condition(x, y, x, y0):
+		return
+		
 	var air = false
 		
 	while y0 >= 0:
-		if get_grid_ref(x, y0) == AIR:
+		if is_air(x, y0):
 			air = true
 			break
 		elif not is_movable(get_grid_ref(x, y0)):
@@ -176,7 +388,8 @@ func move_object_up(x, y):
 		set_grid_ref(x, y0, gf)
 		y0 += 1
 		
-	set_grid_ref(x, y, AIR)
+	#set_grid_ref(x, y, AIR)
+	reload_tile(x, y)
 	
 var tick_id = 0
 		
@@ -199,15 +412,37 @@ func tick():
 	# Won the level!
 	
 func play(delta):
+	
 	tick_timer -= delta
 	if tick_timer <= 0:
 		tick_timer = TIME_PER_TICK
 		tick()
+		
+func begin_playing(ui):
+	tick_id = 0
+	
+	var index = 0
+	for r in robots:
+		var ins: Array = ui.instructions[index]
+		r.instructions = ins.duplicate()
+		index += 1
+		
+		r.pointer = 0
+	
+	is_playing = true
+	tick_timer = TIME_PER_TICK
+	
+func stop_playing():
+	is_playing = false
+	reload_current_level()
+	
+func update_base_rotation(index, rot):
+	robots[index].direction = rot
 	
 func _process(delta):
-	if Input.is_action_pressed("key_play"):
-		is_playing = true
-		tick_timer = TIME_PER_TICK
+	#if Input.is_action_pressed("key_play"):
+	#	is_playing = true
+		#tick_timer = TIME_PER_TICK
 		
 	if is_playing:
 		play(delta)
