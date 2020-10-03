@@ -148,13 +148,19 @@ func _ready():
 	WALL = Node2D.new()
 	ROBOT_FILTER = Node2D.new()
 	
-	current_level = Level.new([Vector2(0, 2)], [Vector2(2, 0)], 5, 5, [
-		2, 1, 1, 1, 1,
-		0, 0, 0, 0, 1,
-		1, 0, 0, 0, 1,
-		1, 0, 0, 0, 1,
-		1, 1, 1, 1, 1
-	], 5, 1)
+	if Global.intended_level == 0:
+		current_level = Level.new([Vector2(0, 2)], [Vector2(2, 0)], 5, 5, [
+			2, 1, 1, 1, 1,
+			0, 0, 0, 0, 1,
+			1, 0, 0, 0, 1,
+			1, 0, 0, 0, 1,
+			1, 1, 1, 1, 1
+		], 5, 1)
+	
+	if Global.intended_level == 1:
+		current_level = Level.new([Vector2(0, 0)], [Vector2(4, 0)], 10, 1, [
+			1, 1, 1, 1, 1, 3, 1, 1, 1, 2
+		], 3, 1) # 3+ x 1
 	
 #	current_level = Level.new([Vector2(0, 0)], [Vector2(4, 2)], 6, 6, [
 #		1, 0, 0, 0, 2, 0,
@@ -165,9 +171,7 @@ func _ready():
 #		1, 0, 0, 0, 0, 0
 #	]) # 3+ x 1
 
-#	current_level = Level.new([Vector2(0, 0)], [Vector2(4, 0)], 10, 1, [
-#		1, 1, 1, 1, 1, 3, 1, 1, 1, 2
-#	]) # 3+ x 1
+
 
 #	current_level = Level.new([Vector2(0, 4), Vector2(5, 6)], [Vector2(4, 4), Vector2(5, 3)], 9, 7, [
 #		0, 0, 0, 0, 0, 2, 0, 0, 0,

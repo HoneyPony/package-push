@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://vector/GroundTile.svg" type="Texture" id=1]
 [ext_resource path="res://UI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://vector/SceneTransition.png" type="Texture" id=3]
+[ext_resource path="res://SceneTransition.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Coordinator.gd" type="Script" id=5]
 
 [sub_resource type="TileSet" id=1]
@@ -19,6 +21,36 @@
 0/shape_one_way_margin = 0.0
 0/shapes = [  ]
 0/z_index = 0
+
+[sub_resource type="Shader" id=2]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform sampler2D anim;
+uniform float time;
+
+void fragment() {
+	
+	
+	float t2 = min(time, 0.97);
+	float frame = round(t2 * 24.0) / 24.0;
+	
+	vec2 uv = UV;
+	uv.x = fract(uv.x);
+	uv.y = fract(uv.y);
+	
+	uv.x /= 24.0;
+	uv.x += frame;
+	COLOR = texture(anim, uv);
+}"
+custom_defines = ""
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+shader = SubResource( 2 )
+shader_param/time = 0.0
+shader_param/anim = ExtResource( 3 )
 
 [node name="Root" type="Node2D"]
 
@@ -42,3 +74,8 @@ z_index = 1000
 tile_set = SubResource( 1 )
 format = 1
 tile_data = PoolIntArray( 7, 0, 0 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SceneTransition" parent="CanvasLayer" instance=ExtResource( 4 )]
+material = SubResource( 3 )
