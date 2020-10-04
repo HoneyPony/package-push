@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://vector/TireAnim.png" type="Texture" id=1]
+
+[sub_resource type="Animation" id=2]
+resource_name = "Backward"
+length = 0.2
+step = 0.017
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.017, 0.034, 0.051, 0.068, 0.085, 0.102, 0.119, 0.136, 0.153, 0.17, 0.187 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "Forward"
+length = 0.2
+step = 0.017
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.017, 0.034, 0.051, 0.068, 0.085, 0.102, 0.119, 0.136, 0.153, 0.17, 0.187 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
+}
+
+[node name="Tread" type="Sprite"]
+texture = ExtResource( 1 )
+hframes = 12
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Backward = SubResource( 2 )
+anims/Forward = SubResource( 1 )

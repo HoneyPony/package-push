@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://sound/recorded/wheels.wav" type="AudioStream" id=1]
 [ext_resource path="res://Robot.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://sound/recorded/double_rotate_2.wav" type="AudioStream" id=7]
 [ext_resource path="res://sound/recorded/wheels_fail.wav" type="AudioStream" id=8]
 [ext_resource path="res://sound/misc/FoamError.wav" type="AudioStream" id=9]
+[ext_resource path="res://Tread.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Error"
@@ -81,3 +82,11 @@ texture = ExtResource( 6 )
 
 [node name="FoamSource" type="Node2D" parent="Sprite2/Sprite2"]
 position = Vector2( -5.61223, 8.15097 )
+
+[node name="Tread" parent="Sprite2/Sprite2" instance=ExtResource( 10 )]
+position = Vector2( 38.4353, -1.98602 )
+scale = Vector2( 0.199125, 0.199125 )
+
+[node name="Tread2" parent="Sprite2/Sprite2" instance=ExtResource( 10 )]
+position = Vector2( -3.38266, -2.09114 )
+scale = Vector2( 0.199125, 0.199125 )

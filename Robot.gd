@@ -24,6 +24,9 @@ var direction = Dir.Right
 var which_robot = 0
 var coordinator = null
 
+onready var t1 = get_node("Sprite2/Sprite2/Tread/AnimationPlayer")
+onready var t2 = get_node("Sprite2/Sprite2/Tread2/AnimationPlayer")
+
 func update_texture(coord):
 	var tex_name = "res://vector/Nums/Num" + String(which_robot) + ".svg"
 	
@@ -87,6 +90,8 @@ func handle_instruction(i, grid):
 			
 		if gx != grid_x or gy != grid_y:
 			$Wheels.play()
+			t1.play("Forward")
+			t2.play("Forward")
 		else:
 			$FoamError.play()
 			anim.play("Error")
@@ -106,6 +111,8 @@ func handle_instruction(i, grid):
 			
 		if gx != grid_x or gy != grid_y:
 			$WheelsBack.play()
+			t1.play("Forward")
+			t2.play("Forward")
 		else:
 			$FoamError.play()
 			anim.play("Error")
@@ -113,15 +120,21 @@ func handle_instruction(i, grid):
 	if i == Ins.Left:
 		$Rotate.play()
 		rotate_left()
+		t2.play("Forward")
+		t1.play("Backward")
 		
 	if i == Ins.Right:
 		$Rotate.play()
 		rotate_right()
+		t2.play("Backward")
+		t1.play("Forward")
 		
 	if i == Ins.Spin:
 		$DoubleRotate.play()
 		rotate_right()
 		rotate_right()
+		t2.play("Backward")
+		t1.play("Forward")
 		
 	if i == Ins.Foam:
 		
@@ -141,7 +154,7 @@ func handle_instruction(i, grid):
 			var foam = Foam.instance()
 			foam.grid_x = x
 			foam.grid_y = y
-			foam.position = $Sprite2/FoamSource.global_position + Vector2(-32, -32)
+			foam.position = $Sprite2/Sprite2/FoamSource.global_position + Vector2(-32, -32)
 			foam.initial_target = Vector2(x * 64, y * 64)
 			get_parent().call_deferred("add_child", foam)
 			
