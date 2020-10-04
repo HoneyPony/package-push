@@ -319,7 +319,7 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 50, 30 )
 
 [node name="Cursor" type="Sprite" parent="."]
-z_index = 5
+z_index = 20
 
 [node name="Play" type="Sprite" parent="."]
 position = Vector2( -107.348, 102.723 )
