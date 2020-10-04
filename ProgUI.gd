@@ -339,7 +339,18 @@ func random_sound(arr: Array):
 	
 	arr[index].play()
 	
+func resume_music():
+	# We can resume game music, but eh...
+	# I like it being resuemd when we change levels better
+	pass
+	#print("resume music")
+	#Global.game_music()
+	#$WinMusic.stop()
+	
 func won():
+	if has_won:
+		return
+	
 	hide_tut(tutorial_step)
 	show_tutorial_step(0)
 	
@@ -349,4 +360,7 @@ func won():
 	$YouWon.playing = true
 	
 	random_sound([$GoodJob, $YouWonSAM])
+	
+	GameMusic.stream_paused = true
+	$WinMusic.play()
 	

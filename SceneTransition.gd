@@ -19,7 +19,6 @@ func _ready():
 		$Arrive.play()
 		
 	if use_menu_music:
-		print("MENU MSUIC")
 		Global.menu_music()
 	else:
 		Global.game_music()

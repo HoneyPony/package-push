@@ -15,9 +15,11 @@ func menu_music():
 	MenuMusic.play()
 		
 func game_music():
+	GameMusic.stream_paused = false
 	if music == 1:
 		return
 		
 	music = 1
 	MenuMusic.stop()
 	GameMusic.play()
+	
