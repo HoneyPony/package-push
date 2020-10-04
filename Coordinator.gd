@@ -213,12 +213,12 @@ func _ready():
 	if Global.intended_level == 4:
 		the_ui.tutorial_step = 23
 		the_ui.tutorial_end = 23
-		current_level = Level.new([Vector2(1, 0), Vector2(4, 4)], [Vector2(4, 1)], 7, 5, [
-			0, 1, 1, 1, 3, 1, 2,
-			0, 0, 0, 0, 1, 0, 0,
-			0, 0, 0, 0, 3, 0, 0,
-			0, 0, 0, 0, 1, 0, 0,
-			0, 0, 0, 0, 1, 0, 0
+		current_level = Level.new([Vector2(0, 0), Vector2(3, 4)], [Vector2(3, 1)],6, 5, [
+			1, 1, 1, 3, 1, 2,
+			0, 0, 0, 1, 0, 0,
+			0, 0, 0, 3, 0, 0,
+			0, 0, 0, 1, 0, 0,
+			0, 0, 0, 1, 0, 0
 		], 3, 2) # 3+ x 1
 
 # Kind of a weird level....
@@ -257,19 +257,22 @@ func _ready():
 		], 6, 2) # 6 x 2
 
 	if Global.intended_level == 7:
-		current_level = Level.new([Vector2(4, 5)], [Vector2(4, 3), Vector2(4, 7)], 5, 11, [
-			0, 0, 0, 0, 0,
-			0, 0, 0, 0, 2,
-			0, 0, 0, 0, 1,
-			0, 0, 0, 0, 1,
-			0, 0, 0, 0, 1,
-			0, 0, 0, 0, 1,
-			0, 0, 0, 0, 1,
-			0, 0, 0, 0, 1,
-			0, 0, 0, 0, 1,
-			0, 0, 0, 0, 2,
-			0, 0, 0, 0, 0
-		], 3, 1) # 3 x 2
+		current_level = Level.new([Vector2(4, 0)], [Vector2(2, 0), Vector2(6, 0)], 9, 1, [
+			2, 1, 1, 1, 1, 1, 1, 1, 2
+		], 3, 1)
+#		current_level = Level.new([Vector2(4, 5)], [Vector2(4, 3), Vector2(4, 7)], 5, 11, [
+#			0, 0, 0, 0, 0,
+#			0, 0, 0, 0, 2,
+#			0, 0, 0, 0, 1,
+#			0, 0, 0, 0, 1,
+#			0, 0, 0, 0, 1,
+#			0, 0, 0, 0, 1,
+#			0, 0, 0, 0, 1,
+#			0, 0, 0, 0, 1,
+#			0, 0, 0, 0, 1,
+#			0, 0, 0, 0, 2,
+#			0, 0, 0, 0, 0
+#		], 3, 1) # 3 x 2
 		
 	if Global.intended_level == 8:
 		current_level = Level.new([Vector2(1, 2), Vector2(0, 6), Vector2(5, 7)], [Vector2(1, 4), Vector2(2, 6), Vector2(5, 4)], 6, 8, [
