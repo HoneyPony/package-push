@@ -4,6 +4,7 @@ var target_scene = null
 var leave_timer = 0
 
 export var use_menu_music = false
+export var play_music = true
 
 var approach_timer = 1.0
 
@@ -18,10 +19,11 @@ func _ready():
 		material.set_shader_param("time", 1.0)
 		$Arrive.play()
 		
-	if use_menu_music:
-		Global.menu_music()
-	else:
-		Global.game_music()
+	if play_music:
+		if use_menu_music:
+			Global.menu_music()
+		else:
+			Global.game_music()
 
 func _process(delta):
 	if approach_timer > 0:

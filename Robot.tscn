@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://sound/recorded/wheels.wav" type="AudioStream" id=1]
 [ext_resource path="res://Robot.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://sound/recorded/wheels_fail.wav" type="AudioStream" id=8]
 [ext_resource path="res://sound/misc/FoamError.wav" type="AudioStream" id=9]
 [ext_resource path="res://Tread.tscn" type="PackedScene" id=10]
+[ext_resource path="res://vector/Nums/Num1.svg" type="Texture" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Error"
@@ -69,6 +70,8 @@ volume_db = -8.0
 bus = "SFX_Other"
 
 [node name="Number" type="Sprite" parent="."]
+z_index = 10
+texture = ExtResource( 11 )
 centered = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

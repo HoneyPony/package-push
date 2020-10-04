@@ -74,6 +74,7 @@ drag_margin_bottom = 0.0
 
 [node name="UI" parent="Camera/CanvasLayer" instance=ExtResource( 2 )]
 process_priority = -2617
+position = Vector2( -1.25989, 0 )
 z_index = 1000
 
 [node name="TileMap" type="TileMap" parent="."]

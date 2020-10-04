@@ -53,6 +53,8 @@ func setup():
 		# Hide all outlines
 		show_tutorial_step(0)
 		
+	$CanvasLayer/Title.text = "\"" + coordinator.current_level.title + "\""
+		
 func _ready():
 	cursor.hide()
 	
@@ -192,7 +194,10 @@ func _process(delta):
 	if has_won:
 		if Input.is_action_just_released("mouse"):
 			Global.intended_level += 1
-			get_node("/root/Root/CanvasLayer/SceneTransition").switch_scene("res://Game.tscn")
+			if Global.intended_level >= 15:
+				get_node("/root/Root/CanvasLayer/SceneTransition").switch_scene("res://WonGame.tscn")
+			else:
+				get_node("/root/Root/CanvasLayer/SceneTransition").switch_scene("res://Game.tscn")
 		return
 	
 	always_process(delta)

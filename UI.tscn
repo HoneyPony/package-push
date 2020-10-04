@@ -884,6 +884,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Title" type="Label" parent="CanvasLayer"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 16.6883
+margin_top = -46.6171
+margin_right = 678.688
+margin_bottom = -1.61707
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+text = "\"Untitled level\""
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TextureButton" type="TextureButton" parent="CanvasLayer"]
 anchor_left = 1.0
 anchor_top = 1.0

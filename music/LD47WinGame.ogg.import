@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/LD47WinGame.ogg-76aad11aac98e4f2540be6d5cfe0c068.oggstr"
+
+[deps]
+
+source_file="res://music/LD47WinGame.ogg"
+dest_files=[ "res://.import/LD47WinGame.ogg-76aad11aac98e4f2540be6d5cfe0c068.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

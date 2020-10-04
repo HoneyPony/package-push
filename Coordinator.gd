@@ -31,7 +31,9 @@ class Level:
 	var columns
 	var rows
 	
-	func _init(bots_, boxes_, width_, height_, grid_, columns_, rows_):
+	var title
+	
+	func _init(bots_, boxes_, width_, height_, grid_, columns_, rows_, title_):
 		bots = bots_
 		boxes = boxes_
 		width = width_
@@ -39,6 +41,7 @@ class Level:
 		grid = grid_
 		columns = columns_
 		rows = rows_
+		title = title_
 		
 var current_level: Level
 var entity_parent = null
@@ -69,6 +72,9 @@ func place_object(obj, pos):
 	set_grid_ref(pos.x, pos.y, obj)
 	
 func reload_level(lvl: Level):
+	if lvl == null:
+		return
+	
 	if entity_parent != null:
 		entity_parent.queue_free()
 		entity_parent = null
@@ -173,12 +179,14 @@ func _ready():
 	WALL = Node2D.new()
 	ROBOT_FILTER = Node2D.new()
 	
+	current_level = null
+	
 	if Global.intended_level == 0:
 		the_ui.tutorial_step = 1
 		the_ui.tutorial_end = 10
 		current_level = Level.new([Vector2(0, 0)], [Vector2(3, 0)], 7, 1, [
 			1, 1, 1, 1, 1, 1, 2
-		], 5, 1)
+		], 5, 1, "Welcome")
 	
 	if Global.intended_level == 1:
 		the_ui.tutorial_step = 11
@@ -189,7 +197,7 @@ func _ready():
 			1, 0, 0, 0, 1,
 			1, 0, 0, 0, 1,
 			1, 1, 1, 1, 1
-		], 5, 1)
+		], 5, 1, "A tiny Loop")
 		
 	
 	if Global.intended_level == 2:
@@ -201,14 +209,14 @@ func _ready():
 			1, 1, 1, 0, 1, 1, 1,
 			0, 0, 1, 0, 1, 0, 0,
 			0, 0, 1, 1, 1, 0, 0
-		], 9, 1)
+		], 9, 1, "A loopy loop")
 	
 	if Global.intended_level == 3:
 		the_ui.tutorial_step = 19
 		the_ui.tutorial_end = 22
 		current_level = Level.new([Vector2(0, 0)], [Vector2(4, 0)], 10, 1, [
 			1, 1, 1, 1, 1, 3, 1, 1, 1, 2
-		], 3, 1) # 3+ x 1
+		], 3, 1, "Foamy conundrum") # 3+ x 1
 		
 	if Global.intended_level == 4:
 		the_ui.tutorial_step = 23
@@ -219,7 +227,7 @@ func _ready():
 			0, 0, 0, 3, 0, 0,
 			0, 0, 0, 1, 0, 0,
 			0, 0, 0, 1, 0, 0
-		], 3, 2) # 3+ x 1
+		], 3, 2, "Destructive interference") # 3+ x 1
 
 # Kind of a weird level....
 #		current_level = Level.new([Vector2(2, 4)], [Vector2(4, 1)], 9, 5, [
@@ -242,7 +250,7 @@ func _ready():
 			0, 1, 0, 0, 0, 1,
 			1, 1, 1, 1, 1, 1,
 			0, 0, 0, 0, 0, 1
-		], 3, 3)
+		], 3, 3, "Triple bot")
 
 
 	if Global.intended_level == 12: # THis level is hard. It was swapped with 12
@@ -254,12 +262,12 @@ func _ready():
 			1, 1, 1, 1, 1, 1, 1, 1, 2, 
 			0, 0, 0, 0, 0, 1, 0, 0, 0,
 			0, 0, 0, 0, 0, 1, 0, 0, 0
-		], 6, 2) # 6 x 2
+		], 6, 2, "redundancy?") # 6 x 2
 
 	if Global.intended_level == 7:
 		current_level = Level.new([Vector2(4, 0)], [Vector2(2, 0), Vector2(6, 0)], 9, 1, [
 			2, 1, 1, 1, 1, 1, 1, 1, 2
-		], 3, 1)
+		], 3, 1, "Both ways in three steps")
 #		current_level = Level.new([Vector2(4, 5)], [Vector2(4, 3), Vector2(4, 7)], 5, 11, [
 #			0, 0, 0, 0, 0,
 #			0, 0, 0, 0, 2,
@@ -284,20 +292,20 @@ func _ready():
 			0, 1, 0, 0, 0, 1,
 			1, 1, 1, 2, 2, 1,
 			0, 0, 0, 0, 0, 1
-		], 3, 3)
+		], 3, 3, "Change of goals")
 
 
 	if Global.intended_level == 9:
 		current_level = Level.new([Vector2(0, 0), Vector2(11, 0)], [Vector2(2, 0), Vector2(9, 0)], 12, 1, [
 			1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1
-		], 3, 2) # 3+ x 1
+		], 3, 2, "Uneven distribution") # 3+ x 1
 	
 		
 	if Global.intended_level == 10:
 		current_level = Level.new([Vector2(0, 0)], [Vector2(1, 0), Vector2(1, 1)], 7, 2, [
 			1, 1, 1, 1, 1, 1, 2,
 			1, 1, 1, 1, 1, 1, 2
-		], 9, 1)
+		], 9, 1, "Two lane road")
 		
 	if Global.intended_level == 11:
 		current_level = Level.new([Vector2(0, 0)], [Vector2(4, 2)], 6, 6, [
@@ -307,7 +315,7 @@ func _ready():
 			1, 0, 0, 0, 1, 0,
 			1, 1, 1, 1, 1, 1,
 			1, 0, 0, 0, 0, 0
-		], 3, 1) # 3+ x 1
+		], 3, 1, "Tricky turns") # 3+ x 1
 	
 	if Global.intended_level == 6:
 		current_level = Level.new([Vector2(4, 4), Vector2(9, 4)], [Vector2(4, 2), Vector2(4, 6), Vector2(2, 4), Vector2(6, 4), Vector2(9, 2), Vector2(9, 6)], 10, 9, [
@@ -320,13 +328,13 @@ func _ready():
 			0, 0, 0, 0, 1, 0, 0, 0, 0, 1,
 			0, 0, 0, 0, 1, 0, 0, 0, 0, 1,
 			0, 0, 0, 0, 2, 0, 0, 0, 0, 2
-		], 4, 2) # 3+ x 1
+		], 4, 2, "Multitasking") # 3+ x 1
 		
 	if Global.intended_level == 13:
 		current_level = Level.new([Vector2(0, 0)], [Vector2(5, 0), Vector2(5, 1)], 7, 2, [
 			1, 1, 1, 1, 3, 1, 2,
 			1, 1, 1, 1, 3, 1, 2
-		], 12, 1)
+		], 12, 1, "Roadblock")
 		
 	if Global.intended_level == 14:
 		current_level = Level.new([Vector2(1, 0), Vector2(0, 4), Vector2(4, 5), Vector2(5, 1)], [Vector2(3, 1), Vector2(1, 2), Vector2(2, 4), Vector2(4, 3)], 6, 6, [
@@ -336,9 +344,10 @@ func _ready():
 			0, 3, 0, 0, 1, 0,
 			1, 1, 1, 3, 1, 2,
 			0, 2, 0, 0, 1, 0
-		], 8, 4)
+		], 8, 4, "ultimate challenge")
 	
-	load_level(current_level)
+	if current_level != null:
+		load_level(current_level)
 	
 func get_grid_ref(x, y):
 	return grid_ref[y * width + x]
