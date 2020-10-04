@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://sound/recorded/wheels.wav" type="AudioStream" id=1]
 [ext_resource path="res://Robot.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://sound/misc/FoamError.wav" type="AudioStream" id=9]
 [ext_resource path="res://Tread.tscn" type="PackedScene" id=10]
 [ext_resource path="res://vector/Nums/Num1.svg" type="Texture" id=11]
+[ext_resource path="res://vector/RobotPupil.svg" type="Texture" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Error"
@@ -70,6 +71,7 @@ volume_db = -8.0
 bus = "SFX_Other"
 
 [node name="Number" type="Sprite" parent="."]
+visible = false
 z_index = 10
 texture = ExtResource( 11 )
 centered = false
@@ -93,3 +95,8 @@ scale = Vector2( 0.199125, 0.199125 )
 [node name="Tread2" parent="Sprite2/Sprite2" instance=ExtResource( 10 )]
 position = Vector2( -3.38266, -2.09114 )
 scale = Vector2( 0.199125, 0.199125 )
+
+[node name="Sprite" type="Sprite" parent="Sprite2/Sprite2"]
+position = Vector2( 10.3152, 5.76714 )
+rotation = 3.14159
+texture = ExtResource( 12 )

@@ -27,6 +27,19 @@ var coordinator = null
 onready var t1 = get_node("Sprite2/Sprite2/Tread/AnimationPlayer")
 onready var t2 = get_node("Sprite2/Sprite2/Tread2/AnimationPlayer")
 
+onready var pupil = get_node("Sprite2/Sprite2/Sprite")
+var pupil_rot_target = 180
+var pupil_timer = 1.5
+
+func handle_pupil(delta):
+	pupil.rotation_degrees += (pupil_rot_target - pupil.rotation_degrees) * 0.2
+	
+	pupil_timer -= delta
+	if pupil_timer <= 0:
+		pupil_timer = rand_range(0.8, 2.1)
+		pupil.rotation_degrees = fmod(pupil.rotation_degrees, 360.0)
+		pupil_rot_target = pupil.rotation_degrees + rand_range(-90, 90) + rand_range(-90, 90)
+
 func update_texture(coord):
 	var tex_name = "res://vector/Nums/Num" + String(which_robot) + ".svg"
 	
@@ -171,6 +184,8 @@ func set_dir_instant():
 func _process(delta):
 	if coordinator != null:
 		$Number.visible = (not coordinator.is_playing) and (not coordinator.has_won)
+		
+	handle_pupil(delta)
 	
 	$Number.global_rotation_degrees = 0
 	

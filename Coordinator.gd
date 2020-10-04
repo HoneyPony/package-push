@@ -108,6 +108,7 @@ func reload_level(lvl: Level):
 		var pkg = Package.instance()
 		entity_parent.add_child(pkg)
 		place_object(pkg, p)
+		pkg.update_tex()
 		
 func map_to_tile(grid_num):
 	return grid_num - 1
@@ -187,8 +188,12 @@ func _ready():
 	if Global.intended_level == 0:
 		the_ui.tutorial_step = 1
 		the_ui.tutorial_end = 10
-		current_level = Level.new([Vector2(0, 0)], [Vector2(3, 0)], 7, 1, [
-			1, 1, 1, 1, 1, 1, 2
+		current_level = Level.new([Vector2(0, 2)], [Vector2(3, 2)], 7, 5, [
+			1, 1, 1, 1, 1, 1, 1,
+			1, 1, 1, 1, 1, 1, 1,
+			1, 1, 1, 1, 1, 1, 2,
+			1, 1, 1, 1, 1, 1, 1,
+			1, 1, 1, 1, 1, 1, 1,
 		], 5, 1, "Welcome")
 	
 	if Global.intended_level == 1:
