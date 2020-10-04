@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/nicejob.wav-6c506a4f67dd8d0232f83a26843cb147.sample"
+
+[deps]
+
+source_file="res://sound/sam/nicejob.wav"
+dest_files=[ "res://.import/nicejob.wav-6c506a4f67dd8d0232f83a26843cb147.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

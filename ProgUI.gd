@@ -373,7 +373,7 @@ func won():
 	$YouWon.frame = 0
 	$YouWon.playing = true
 	
-	random_sound([$GoodJob, $YouWonSAM])
+	random_sound([$GoodJob, $YouWonSAM, $YouWonSAM2, $YouWonSAM3])
 	
 	GameMusic.stream_paused = true
 	$WinMusic.play()

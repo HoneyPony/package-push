@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=2]
+[gd_scene load_steps=79 format=2]
 
 [ext_resource path="res://vector/Prog/BG.svg" type="Texture" id=1]
 [ext_resource path="res://vector/Prog/Forward.svg" type="Texture" id=2]
@@ -45,6 +45,8 @@
 [ext_resource path="res://music/LD47Win.ogg" type="AudioStream" id=43]
 [ext_resource path="res://vector/Prog/NoSlot.svg" type="Texture" id=44]
 [ext_resource path="res://vector/Prog/SlotHighlight.svg" type="Texture" id=45]
+[ext_resource path="res://sound/sam/youdidit.wav" type="AudioStream" id=46]
+[ext_resource path="res://sound/sam/nicejob.wav" type="AudioStream" id=47]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://font/luckiest-guy/LuckiestGuy.ttf"
@@ -965,6 +967,14 @@ bus = "SAM"
 
 [node name="YouWonSAM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 36 )
+bus = "SAM"
+
+[node name="YouWonSAM2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 47 )
+bus = "SAM"
+
+[node name="YouWonSAM3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 46 )
 bus = "SAM"
 
 [node name="WinMusic" type="AudioStreamPlayer" parent="."]

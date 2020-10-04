@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/youdidit.wav-eda6a93d34407b678e8f6f9a052ad745.sample"
+
+[deps]
+
+source_file="res://sound/sam/youdidit.wav"
+dest_files=[ "res://.import/youdidit.wav-eda6a93d34407b678e8f6f9a052ad745.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
