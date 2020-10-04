@@ -2,10 +2,14 @@ extends Sprite
 
 var cell
 var instruction
+var ui
 
 signal clicked
 
 func _process(delta):
+	if ui.has_won:
+		return
+	
 	var mouse = get_global_mouse_position()
 	
 	var size = Vector2(40, 30)

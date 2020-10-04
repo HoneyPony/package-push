@@ -15,8 +15,13 @@ func _ready():
 	rotation_degrees = 90
 	
 func _process(delta):
+
+	
 	visible = not ui.playing
 	if ui.playing:
+		return
+		
+	if ui.has_won:
 		return
 	
 	var mouse = get_global_mouse_position()

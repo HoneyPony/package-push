@@ -103,6 +103,7 @@ func generate_instruction_sprite():
 				var spr = ProgInstruct.instance()
 				spr.cell = Vector2(x, y)
 				spr.connect("clicked", self, "_on_instruct")
+				spr.ui = self
 				
 				instruction_sprite.add_child(spr)
 				spr.global_position = pos
@@ -137,7 +138,7 @@ var drag_last_mouse = Vector2(0, 0)
 var playing = false
 	
 func always_process(delta):
-	ensure_viewport_position()
+	
 	
 	if dragging_camera:
 		var mouse = get_local_mouse_position()
@@ -163,6 +164,14 @@ func always_process(delta):
 			show_tutorial_step(0)
 	
 func _process(delta):
+	ensure_viewport_position()
+	
+	if has_won:
+		if Input.is_action_just_released("mouse"):
+			Global.intended_level += 1
+			get_node("/root/Root/CanvasLayer/SceneTransition").switch_scene("res://Game.tscn")
+		return
+	
 	always_process(delta)
 	
 	if playing:
@@ -238,6 +247,7 @@ func _on_play():
 		$Play.texture = sp_Stop
 		playing = true
 		coordinator.begin_playing(self)
+		random_sound([$Go, $LetsGo, $Run, $RunPrgram, $PlaySAM])
 
 func get_robot_direction(index):
 	var angle = get_node("Rot" + String(index)).angle
@@ -289,7 +299,7 @@ func show_tutorial_step(step):
 	if last >= 1:
 		hide_tut(last)
 		
-	if step <= 18:
+	if step <= 23:
 		show_tut(step)
 	$OutlinePalette.visible = step == 5
 	$OutlineSlots.visible = step == 6
@@ -301,7 +311,7 @@ func show_tutorial_step(step):
 	$OutlineRLeft.visible = step == 15
 	$OutlineRRight.visible = step == 16
 	$OutlineFlip.visible = step == 17
-	$OutlineFoam.visible = step == 1000
+	$OutlineFoam.visible = step == 21
 	
 func _on_back():
 	get_node("/root/Root/CanvasLayer/SceneTransition").switch_scene("res://LevelSelect.tscn")
@@ -311,3 +321,23 @@ func _on_step():
 	$Play.texture = sp_Stop
 	playing = true
 	coordinator.manual_step(self)
+	
+var has_won = false
+
+func random_sound(arr: Array):
+	var index = rand_range(0, arr.size())
+	index = min(index, arr.size() - 1)
+	
+	arr[index].play()
+	
+func won():
+	hide_tut(tutorial_step)
+	show_tutorial_step(0)
+	
+	has_won = true
+	$YouWon.show()
+	$YouWon.frame = 0
+	$YouWon.playing = true
+	
+	random_sound([$GoodJob, $YouWonSAM])
+	

@@ -11,7 +11,7 @@ var WALL
 var ROBOT_FILTER
 
 var grid_ref = []
-var goals = [Vector2(4, 0)]
+var goals = []
 var width = 6
 var height = 6
 
@@ -81,9 +81,9 @@ func reload_level(lvl: Level):
 	height = lvl.height
 	
 	grid_ref.clear()
-	for i in lvl.grid:
+	for i in lvl.grid:		
 		grid_ref.append(level_to_grid_ref(i))
-	
+		
 	var bot_index = 0
 	for r in lvl.bots:
 		var bot = Robot.instance()
@@ -135,6 +135,12 @@ func load_level(lvl: Level):
 			x = 0
 			y += 1
 	
+	goals.clear()
+	for gx in range(0, width):
+		for gy in range(0, height):
+			if get_grid_source(gx, gy) == 2:
+				goals.append(Vector2(gx, gy))
+	
 	reload_level(lvl)
 	
 	the_ui.columns = lvl.columns
@@ -180,11 +186,15 @@ func _ready():
 		], 9, 1)
 	
 	if Global.intended_level == 3:
+		the_ui.tutorial_step = 19
+		the_ui.tutorial_end = 22
 		current_level = Level.new([Vector2(0, 0)], [Vector2(4, 0)], 10, 1, [
 			1, 1, 1, 1, 1, 3, 1, 1, 1, 2
 		], 3, 1) # 3+ x 1
 		
 	if Global.intended_level == 4:
+		the_ui.tutorial_step = 23
+		the_ui.tutorial_end = 23
 		current_level = Level.new([Vector2(1, 0), Vector2(4, 4)], [Vector2(4, 1)], 7, 5, [
 			0, 1, 1, 1, 3, 1, 2,
 			0, 0, 0, 0, 1, 0, 0,
@@ -504,6 +514,8 @@ func tick():
 		if not obj.is_package():
 			return
 	# Won the level!
+	the_ui.won()
+	is_playing = false
 	
 func play(delta):
 	

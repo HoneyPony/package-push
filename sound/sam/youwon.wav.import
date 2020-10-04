@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/youwon.wav-5f8743e39e5a1cef512b258cd1dd9dc1.sample"
+
+[deps]
+
+source_file="res://sound/sam/youwon.wav"
+dest_files=[ "res://.import/youwon.wav-5f8743e39e5a1cef512b258cd1dd9dc1.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

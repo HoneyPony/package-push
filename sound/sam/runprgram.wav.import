@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/runprgram.wav-e5891731cc5644a0b74c0acaa4f316a1.sample"
+
+[deps]
+
+source_file="res://sound/sam/runprgram.wav"
+dest_files=[ "res://.import/runprgram.wav-e5891731cc5644a0b74c0acaa4f316a1.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

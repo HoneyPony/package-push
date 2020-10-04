@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/shutitdown.wav-b9b62e65ce7b1c20c3995e2314fe216c.sample"
+
+[deps]
+
+source_file="res://sound/sam/shutitdown.wav"
+dest_files=[ "res://.import/shutitdown.wav-b9b62e65ce7b1c20c3995e2314fe216c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

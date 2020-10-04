@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://vector/Prog/BG.svg" type="Texture" id=1]
 [ext_resource path="res://vector/Prog/Forward.svg" type="Texture" id=2]
@@ -29,20 +29,133 @@
 [ext_resource path="res://vector/Prog/OutlinePlay.svg" type="Texture" id=27]
 [ext_resource path="res://vector/Prog/OutlineRot.svg" type="Texture" id=28]
 [ext_resource path="res://vector/Prog/Step.svg" type="Texture" id=29]
-
-[sub_resource type="DynamicFontData" id=3]
-font_path = "res://font/luckiest-guy/LuckiestGuy.ttf"
-
-[sub_resource type="DynamicFont" id=4]
-size = 30
-font_data = SubResource( 3 )
+[ext_resource path="res://vector/YouWon.png" type="Texture" id=30]
+[ext_resource path="res://sound/sam/runprgram.wav" type="AudioStream" id=31]
+[ext_resource path="res://sound/sam/go.wav" type="AudioStream" id=32]
+[ext_resource path="res://sound/sam/play.wav" type="AudioStream" id=33]
+[ext_resource path="res://sound/sam/run.wav" type="AudioStream" id=34]
+[ext_resource path="res://sound/sam/letsgo.wav" type="AudioStream" id=35]
+[ext_resource path="res://sound/sam/youwon.wav" type="AudioStream" id=36]
+[ext_resource path="res://sound/sam/congratulations.wav" type="AudioStream" id=37]
+[ext_resource path="res://sound/sam/goodjob.wav" type="AudioStream" id=38]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://font/luckiest-guy/LuckiestGuy.ttf"
 
 [sub_resource type="DynamicFont" id=2]
-size = 27
+size = 30
 font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFontData" id=3]
+font_path = "res://font/luckiest-guy/LuckiestGuy.ttf"
+
+[sub_resource type="DynamicFont" id=4]
+size = 27
+font_data = SubResource( 3 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 30 )
+region = Rect2( 0, 0, 800, 400 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 30 )
+region = Rect2( 0, 400, 800, 400 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 30 )
+region = Rect2( 0, 800, 800, 400 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 30 )
+region = Rect2( 0, 1200, 800, 400 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 30 )
+region = Rect2( 0, 1600, 800, 400 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 30 )
+region = Rect2( 0, 2000, 800, 400 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 30 )
+region = Rect2( 0, 2400, 800, 400 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 30 )
+region = Rect2( 0, 2800, 800, 400 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 30 )
+region = Rect2( 0, 3200, 800, 400 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 30 )
+region = Rect2( 0, 3600, 800, 400 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 30 )
+region = Rect2( 0, 4000, 800, 400 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 30 )
+region = Rect2( 0, 4400, 800, 400 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 30 )
+region = Rect2( 0, 4800, 800, 400 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 30 )
+region = Rect2( 0, 5200, 800, 400 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 30 )
+region = Rect2( 0, 5600, 800, 400 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 30 )
+region = Rect2( 0, 6000, 800, 400 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 30 )
+region = Rect2( 0, 6400, 800, 400 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 30 )
+region = Rect2( 0, 6800, 800, 400 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 30 )
+region = Rect2( 0, 7200, 800, 400 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 30 )
+region = Rect2( 0, 7600, 800, 400 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 30 )
+region = Rect2( 0, 8000, 800, 400 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 30 )
+region = Rect2( 0, 8400, 800, 400 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 30 )
+region = Rect2( 0, 8800, 800, 400 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 30 )
+region = Rect2( 0, 9200, 800, 400 )
+
+[sub_resource type="SpriteFrames" id=29]
+animations = [ {
+"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ) ],
+"loop": false,
+"name": "default",
+"speed": 48.0
+} ]
 
 [node name="UI" type="Node2D"]
 script = ExtResource( 8 )
@@ -219,7 +332,7 @@ margin_left = -327.017
 margin_top = -438.993
 margin_right = 352.983
 margin_bottom = -203.993
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
 text = "Hello! Welcome to <Game Name>. 
 This tutorial will teach you how to play!
@@ -242,7 +355,7 @@ margin_left = -301.297
 margin_top = -389.393
 margin_right = 321.703
 margin_bottom = -222.393
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
 text = "Your task is to program robots to push
 packages to their destinations. However,
@@ -263,7 +376,7 @@ margin_left = -302.631
 margin_top = -389.295
 margin_right = 363.369
 margin_bottom = -222.295
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
 text = "Each robot can only execute a repeating
 loop of instructions. So it won't usually be
@@ -284,7 +397,7 @@ margin_left = -343.359
 margin_top = -391.228
 margin_right = 396.641
 margin_bottom = -224.228
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
 text = "However, this first example is not too bad. We
 need to tell the robot to move straight and push
@@ -305,7 +418,7 @@ margin_left = -323.569
 margin_top = -462.308
 margin_right = 357.431
 margin_bottom = -227.308
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
 text = "This panel is the \"instruction palette.\"
 
@@ -328,7 +441,7 @@ margin_left = -331.893
 margin_top = -458.741
 margin_right = 349.107
 margin_bottom = -223.741
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
 text = "This panel contains the program for each
 robot. You can drag instructions from the
@@ -351,7 +464,7 @@ margin_left = -331.893
 margin_top = -525.336
 margin_right = 349.107
 margin_bottom = -222.336
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
 text = "Each number corresponds to the robot with
 that number on screen. The arrows next to
@@ -376,7 +489,7 @@ margin_left = -385.408
 margin_top = -425.443
 margin_right = 406.592
 margin_bottom = -122.443
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
 text = "Once you are done programming the robots,
 you can push this button to run your
@@ -398,7 +511,7 @@ margin_left = -378.272
 margin_top = -323.171
 margin_right = 413.728
 margin_bottom = -20.1711
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
 text = "This instruction moves the robot forward.
 
@@ -417,7 +530,7 @@ margin_left = -388.975
 margin_top = -389.767
 margin_right = 403.025
 margin_bottom = -86.7667
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
 text = "This instruction moves the robot backwards.
 
@@ -438,7 +551,7 @@ margin_left = -222.639
 margin_top = -310.307
 margin_right = 569.36
 margin_bottom = -7.30695
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
 text = "Welcome to the second level!
 
@@ -457,7 +570,7 @@ margin_left = -353.881
 margin_top = -382.011
 margin_right = 365.119
 margin_bottom = -79.0109
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
 text = "Here moving straight is not going to be enough.
 
@@ -478,7 +591,7 @@ margin_left = -371.892
 margin_top = -442.4
 margin_right = 366.108
 margin_bottom = -139.4
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
 text = "First, you might notice that your robot is not
 facing down, even though it needs to move down.
@@ -501,7 +614,7 @@ margin_left = -366.714
 margin_top = -374.654
 margin_right = 383.286
 margin_bottom = -71.6541
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
 text = "Now that it's facing the right way, you'll have
 to figure out a way to create a 5-instruction loop
@@ -522,7 +635,7 @@ margin_left = -350.405
 margin_top = -408.189
 margin_right = 334.595
 margin_bottom = -105.189
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
 text = "Conveniently, you have some ways to rotate
 your robot.
@@ -544,7 +657,7 @@ margin_left = -337.594
 margin_top = -307.0
 margin_right = 304.406
 margin_bottom = -4.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
 text = "This instruction rotates the robot right.
 
@@ -563,7 +676,7 @@ margin_left = -359.0
 margin_top = -304.622
 margin_right = 353.0
 margin_bottom = -1.62158
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
 text = "This instruction rotates the robot 180 degrees.
 
@@ -582,9 +695,125 @@ margin_left = -267.064
 margin_top = -306.505
 margin_right = 251.936
 margin_bottom = -3.50513
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
 text = "That's it for this puzzle! Good luck!
+
+Press space to continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial_19" type="Label" parent="CanvasLayer/Tutorial"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -314.83
+margin_top = -437.882
+margin_right = 344.17
+margin_bottom = -134.883
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+text = "Do you see that gray tile in front
+of you?
+
+Your robot cannot move through it, but the
+package can. SO how can we possibly win?
+
+Press space to continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial_20" type="Label" parent="CanvasLayer/Tutorial"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -314.83
+margin_top = -437.882
+margin_right = 344.17
+margin_bottom = -134.883
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+text = "Well this is where your robot's last ability
+comes into play.
+
+Your robot is able to generate blocks of foam
+and push them around.
+
+Press space to continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial_21" type="Label" parent="CanvasLayer/Tutorial"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -342.22
+margin_top = -470.035
+margin_right = 367.78
+margin_bottom = -167.036
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+text = "Conveniently, blocks of foam will also fit
+under the gray tile.
+
+Use this command to generate foam in front
+of your robot. Foam will only be created if
+there is room in front of your robot.
+
+Press space to continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial_22" type="Label" parent="CanvasLayer/Tutorial"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -309.462
+margin_top = -412.079
+margin_right = 364.538
+margin_bottom = -109.079
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+text = "You're going to want to create a block of
+foam, push it, and then create more...
+
+do you see how? 
+
+Press space to continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial_23" type="Label" parent="CanvasLayer/Tutorial"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -346.479
+margin_top = -472.015
+margin_right = 359.521
+margin_bottom = -169.015
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+text = "A little tip... Sometimes your initial program
+won't work because one robot does something
+before the other.
+
+You can generally offset the cycles a little bit
+by rearranging your program instructions.
 
 Press space to continue"
 __meta__ = {
@@ -611,7 +840,7 @@ margin_left = 18.0411
 margin_top = 15.1361
 margin_right = 122.041
 margin_bottom = 60.1361
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
 text = "Back"
 __meta__ = {
@@ -648,6 +877,46 @@ texture = ExtResource( 27 )
 [node name="OutlineRot" type="Sprite" parent="."]
 position = Vector2( 60.7907, 24.2056 )
 texture = ExtResource( 28 )
+
+[node name="YouWon" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 3.79266, -82.7945 )
+z_index = 100
+frames = SubResource( 29 )
+frame = 23
+playing = true
+
+[node name="Go" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 32 )
+bus = "SAM"
+
+[node name="LetsGo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 35 )
+bus = "SAM"
+
+[node name="Run" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 34 )
+bus = "SAM"
+
+[node name="RunPrgram" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 31 )
+bus = "SAM"
+
+[node name="PlaySAM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 33 )
+bus = "SAM"
+
+[node name="Congratulations" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 37 )
+bus = "SAM"
+
+[node name="GoodJob" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 38 )
+bus = "SAM"
+
+[node name="YouWonSAM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 36 )
+bus = "SAM"
 [connection signal="clicked" from="Palette/Foam" to="." method="_on_new_foam"]
 [connection signal="clicked" from="Palette/Right" to="." method="_on_new_right"]
 [connection signal="clicked" from="Palette/Left" to="." method="_on_new_left"]

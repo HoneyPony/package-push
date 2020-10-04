@@ -2,7 +2,12 @@ extends Sprite
 
 signal clicked
 
+onready var ui = get_node("/root/Root/Camera/CanvasLayer/UI")
+
 func _process(delta):
+	if ui.has_won:
+		return
+	
 	var mouse = get_global_mouse_position()
 	
 	var size = texture.get_size()
