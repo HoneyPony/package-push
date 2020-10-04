@@ -346,6 +346,17 @@ func _ready():
 #		], 6, 1, "just around the bend")
 
 	if Global.intended_level == 14:
+		current_level = Level.new([Vector2(0, 4), Vector2(4, 6), Vector2(6, 2)], [Vector2(3, 4), Vector2(4, 3), Vector2(3, 2)], 7, 7, [
+			0, 0, 0, 0, 2, 0, 0,
+			0, 0, 0, 0, 1, 0, 0,
+			2, 1, 3, 1, 1, 1, 1,
+			0, 0, 0, 0, 1, 0, 0,
+			1, 1, 3, 1, 3, 1, 2,
+			0, 0, 0, 0, 1, 0, 0,
+			0, 0, 0, 0, 1, 0, 0
+		], 6, 3, "crossed streams")
+
+	if Global.intended_level == 100:
 		current_level = Level.new([Vector2(0, 1), Vector2(5, 0), Vector2(6, 3)], [Vector2(1, 1), Vector2(2, 1), Vector2(3, 1)], 7, 4, [
 			0, 0, 0, 0, 0, 1, 0,
 			1, 1, 1, 1, 1, 1, 0,
@@ -362,6 +373,19 @@ func _ready():
 			0, 0, 1, 0, 1, 0, 0, 0, 0,
 			0, 0, 1, 0, 1, 0, 0, 0, 0,
 		], 4, 3, "precise packing")
+		
+	if Global.intended_level == 100:
+		current_level = Level.new([Vector2(2, 0), Vector2(0, 4), Vector2(2, 4), Vector2(4, 4), Vector2(2, 8)], [Vector2(2, 1), Vector2(2, 2), Vector2(2, 6), Vector2(2, 7)], 5, 9, [
+			0, 0, 1, 0, 0,
+			0, 0, 1, 0, 0, 
+			2, 0, 1, 0, 2, 
+			1, 0, 1, 0, 1, 
+			1, 1, 1, 1, 1, 
+			1, 0, 1, 0, 1, 
+			2, 0, 1, 0, 2, 
+			0, 0, 1, 0, 0, 
+			0, 0, 1, 0, 0
+		], 6, 5, "greater distribution center")
 		
 	if Global.intended_level == 100:
 		current_level = Level.new([Vector2(2, 0), Vector2(0, 4), Vector2(2, 4), Vector2(4, 4), Vector2(2, 8)], [Vector2(2, 1), Vector2(2, 2), Vector2(2, 6), Vector2(2, 7)], 5, 9, [
