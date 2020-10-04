@@ -128,17 +128,26 @@ func ensure_viewport_position():
 	var height = viewport.size.y
 	
 	var half_height = height * 0.5
-	var y = height - 200
+	var y = height - 250
 	position.y = y
 	position.x = viewport.size.x * 0.5
+	
+	position.x -= 235
 	
 var dragging_camera = false
 var drag_last_mouse = Vector2(0, 0)
 
 var playing = false
+
+onready var s_highlight = get_node("SlotHighlight")
 	
 func always_process(delta):
+	s_highlight.visible = playing
+	var highlight_cell = coordinator.get_current_tick()
+	s_highlight.global_position = get_cell_pos(highlight_cell) - Vector2(2, 0)
 	
+	if highlight_cell.x < 0 or highlight_cell.y < 0:
+		s_highlight.visible = false
 	
 	if dragging_camera:
 		var mouse = get_local_mouse_position()
@@ -250,6 +259,9 @@ func _on_play():
 		playing = true
 		coordinator.begin_playing(self)
 		random_sound([$Go, $LetsGo, $Run, $RunPrgram, $PlaySAM])
+
+func is_instruct_tick(cell):
+	return cell == coordinator.get_current_tick()
 
 func get_robot_direction(index):
 	var angle = get_node("Rot" + String(index)).angle

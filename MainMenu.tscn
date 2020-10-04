@@ -1,6 +1,43 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://vector/TitleCard_InGame.svg" type="Texture" id=1]
+[ext_resource path="res://font/luckiest-guy/LuckiestGuy.tres" type="DynamicFont" id=2]
+[ext_resource path="res://vector/LevelSelect/ButtonPress.svg" type="Texture" id=3]
+[ext_resource path="res://vector/LevelSelect/ButtonHighlight.svg" type="Texture" id=4]
+[ext_resource path="res://vector/LevelSelect/Button.svg" type="Texture" id=5]
+[ext_resource path="res://PlayGame.gd" type="Script" id=6]
+[ext_resource path="res://vector/SceneTransition.png" type="Texture" id=7]
+[ext_resource path="res://SceneTransition.tscn" type="PackedScene" id=8]
+
+[sub_resource type="Shader" id=1]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform sampler2D anim;
+uniform float time;
+
+void fragment() {
+	
+	
+	float t2 = min(time, 0.97);
+	float frame = round(t2 * 24.0) / 24.0;
+	
+	vec2 uv = UV;
+	uv.x = fract(uv.x);
+	uv.y = fract(uv.y);
+	
+	uv.x /= 24.0;
+	uv.x += frame;
+	COLOR = texture(anim, uv);
+}"
+custom_defines = ""
+
+[sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/time = 0.0
+shader_param/anim = ExtResource( 7 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -15,3 +52,36 @@ anchor_bottom = 1.0
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 6
+
+[node name="TextureButton" type="TextureButton" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 26.9087
+margin_top = -82.7042
+margin_right = 171.909
+margin_bottom = -22.7042
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 4 )
+expand = true
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TextureButton"]
+margin_left = 16.064
+margin_top = 13.8591
+margin_right = 129.064
+margin_bottom = 58.8591
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+text = "Play!"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SceneTransition" parent="." instance=ExtResource( 8 )]
+material = SubResource( 2 )
+use_menu_music = true
+[connection signal="pressed" from="TextureButton" to="TextureButton" method="_on_presssed"]

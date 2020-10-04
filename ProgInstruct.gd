@@ -7,6 +7,13 @@ var ui
 signal clicked
 
 func _process(delta):
+	if ui.playing:
+		if ui.is_instruct_tick(cell):
+			modulate =  Color(1.1, 1.1, 1.1, 1.0)
+		else:
+			modulate = Color(1, 1, 1, 1.0)
+		return
+	
 	if ui.has_won:
 		return
 	

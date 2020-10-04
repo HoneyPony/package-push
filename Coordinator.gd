@@ -511,6 +511,9 @@ var tick_id = 0
 		
 func tick():
 	#get_tree().call_group("Robots", "tick", self)
+	last_pointer = robots[tick_id].pointer
+	last_tick_id = tick_id
+	
 	robots[tick_id].tick(self)
 		
 	tick_id = (tick_id + 1) % robots.size()
@@ -526,6 +529,15 @@ func tick():
 	the_ui.won()
 	has_won = true
 	is_playing = false
+	
+var last_tick_id = -1
+var last_pointer = -1
+	
+func get_current_tick():
+	if last_tick_id == -1:
+		return Vector2(-1, -1)
+	
+	return Vector2(last_pointer, last_tick_id)
 	
 func play(delta):
 	
@@ -543,6 +555,9 @@ func manual_step(ui):
 	tick()
 		
 func begin_playing(ui):
+	last_tick_id = -1
+	last_pointer = -1
+	
 	tick_id = 0
 	
 	var index = 0

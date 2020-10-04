@@ -3,5 +3,6 @@
 [ext_resource path="res://ProgInstruct.gd" type="Script" id=1]
 
 [node name="ProgInstruct" type="Sprite"]
+z_index = 10
 centered = false
 script = ExtResource( 1 )

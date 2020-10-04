@@ -24,6 +24,7 @@ config/icon="res://vector/Icon.png"
 Global="*res://Global.gd"
 MenuMusic="*res://MenuMusic.tscn"
 GameMusic="*res://GameMusic.tscn"
+PlayGame="*res://PlayGame.tscn"
 
 [display]
 
