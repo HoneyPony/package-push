@@ -24,7 +24,7 @@ var held_instruction = null
 var instruction_sprite = null
 
 var tutorial_step = 0
-var tutorial_end = 0
+var tutorial_end = -5
 
 func setup():
 	slots.region_rect.size.x = 46 * columns
@@ -168,10 +168,12 @@ func always_process(delta):
 		tutorial_step += 1
 		if tutorial_step <= tutorial_end:
 			show_tutorial_step(tutorial_step)
-			$Tutorial.play()
 		else:
 			hide_tut(tutorial_end)
 			show_tutorial_step(0)
+			
+		if tutorial_step <= tutorial_end + 1:
+			$Tutorial.play()
 	
 func _process(delta):
 	ensure_viewport_position()

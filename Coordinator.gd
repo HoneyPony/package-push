@@ -119,9 +119,16 @@ func load_level(lvl: Level):
 	width = lvl.width
 	height = lvl.height
 	
+	#var avg_x = 0
+	#var avg_y = 0
+	
 	var x = 0
 	var y = 0
 	for i in lvl.grid:
+		#if i != 0:
+		#	avg_x += x
+		#	avg_y += y
+		
 		var cell = map_to_tile(i)
 		
 		if i == 2:
@@ -149,6 +156,14 @@ func load_level(lvl: Level):
 	the_ui.columns = lvl.columns
 	the_ui.rows = lvl.rows
 	the_ui.call_deferred("setup")
+	
+	#avg_x /= width * height
+	#avg_y /= width * height
+	
+	#print("avg: ", avg_x, ", ", avg_y)
+	
+	#get_node("../Camera").position = Vector2(avg_x, avg_y) * 64
+	get_node("../Camera").position = Vector2(width / 2.0, height / 2.0) * 64 + Vector2(0, 128)
 	
 func reload_current_level():
 	reload_level(current_level)
