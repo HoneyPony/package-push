@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="5.6"
-     inkscape:cx="-2.7902172"
-     inkscape:cy="132.983"
+     inkscape:zoom="3.959798"
+     inkscape:cx="-2.598946"
+     inkscape:cy="56.189684"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -45,7 +45,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -102,8 +102,36 @@
        style="opacity:1;fill:#d2c37f;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect5372"
        width="0.45697698"
-       height="43.920818"
+       height="7.9374843"
        x="11.713856"
        y="252.55" />
+    <rect
+       y="261.54587"
+       x="11.713856"
+       height="7.9374843"
+       width="0.45697698"
+       id="rect7177"
+       style="opacity:1;fill:#d2c37f;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <rect
+       style="opacity:1;fill:#d2c37f;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect7179"
+       width="0.45697698"
+       height="7.9374843"
+       x="11.713856"
+       y="270.54172" />
+    <rect
+       y="279.53751"
+       x="11.713856"
+       height="7.9374843"
+       width="0.45697698"
+       id="rect7181"
+       style="opacity:1;fill:#d2c37f;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <rect
+       style="opacity:1;fill:#d2c37f;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect7183"
+       width="0.45697698"
+       height="7.9374843"
+       x="11.713856"
+       y="288.53333" />
   </g>
 </svg>

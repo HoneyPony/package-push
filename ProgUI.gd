@@ -27,7 +27,18 @@ var tutorial_step = 0
 var tutorial_end = -5
 
 func setup():
+	var sz = 46 * columns
 	slots.region_rect.size.x = 46 * columns
+	
+	$Slots/Unused2.region_rect.size.x = sz
+	$Slots/Unused3.region_rect.size.x = sz
+	$Slots/Unused4.region_rect.size.x = sz
+	$Slots/Unused5.region_rect.size.x = sz
+	
+	$Slots/Unused2.visible = rows < 2
+	$Slots/Unused3.visible = rows < 3
+	$Slots/Unused4.visible = rows < 4
+	$Slots/Unused5.visible = rows < 5
 	
 	instructions = []
 	for i in range(0, 5):

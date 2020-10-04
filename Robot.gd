@@ -89,6 +89,7 @@ func handle_instruction(i, grid):
 			$Wheels.play()
 		else:
 			$FoamError.play()
+			anim.play("Error")
 			
 	if i == Ins.Backward:
 		var gx = grid_x
@@ -107,6 +108,7 @@ func handle_instruction(i, grid):
 			$WheelsBack.play()
 		else:
 			$FoamError.play()
+			anim.play("Error")
 		
 	if i == Ins.Left:
 		$Rotate.play()
@@ -148,6 +150,7 @@ func handle_instruction(i, grid):
 			$Foam.play()
 		else:
 			$FoamError.play()
+			anim.play("Error")
 			
 func set_dir_instant():
 	$Sprite2.rotation_degrees = fmod(get_target_direction(), 360)

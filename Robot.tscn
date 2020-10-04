@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://sound/recorded/wheels.wav" type="AudioStream" id=1]
 [ext_resource path="res://Robot.gd" type="Script" id=2]
@@ -11,55 +11,26 @@
 [ext_resource path="res://sound/misc/FoamError.wav" type="AudioStream" id=9]
 
 [sub_resource type="Animation" id=1]
-resource_name = "DownIdle"
-
-[sub_resource type="Animation" id=2]
-resource_name = "DownMove"
-length = 0.4
-loop = true
-
-[sub_resource type="Animation" id=3]
-
-[sub_resource type="Animation" id=4]
-resource_name = "LeftMove"
-length = 0.4
-loop = true
-
-[sub_resource type="Animation" id=5]
-
-[sub_resource type="Animation" id=6]
-length = 0.4
-loop = true
-step = 0.2
-
-[sub_resource type="Animation" id=7]
-
-[sub_resource type="Animation" id=8]
-length = 0.4
-loop = true
+resource_name = "Error"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2/Sprite2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -2, 0 ), Vector2( 2, 0 ), Vector2( -2, 0 ), Vector2( 2, 0 ), Vector2( 0, 0 ) ]
+}
 
 [node name="WheelBot" type="Node2D" groups=[
 "Robots",
 ]]
 script = ExtResource( 2 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "RightIdle"
-anims/DownIdle = SubResource( 1 )
-anims/DownMove = SubResource( 2 )
-anims/LeftIdle = SubResource( 3 )
-anims/LeftMove = SubResource( 4 )
-anims/RightIdle = SubResource( 5 )
-anims/RightMove = SubResource( 6 )
-anims/UpIdle = SubResource( 7 )
-anims/UpMove = SubResource( 8 )
-
-[node name="Sprite2" type="Sprite" parent="."]
-position = Vector2( 32, 32 )
-texture = ExtResource( 6 )
-
-[node name="FoamSource" type="Node2D" parent="Sprite2"]
-position = Vector2( -5.61223, 8.15097 )
 
 [node name="Wheels" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
@@ -98,3 +69,15 @@ bus = "SFX_Other"
 
 [node name="Number" type="Sprite" parent="."]
 centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Error = SubResource( 1 )
+
+[node name="Sprite2" type="Node2D" parent="."]
+position = Vector2( 32, 32 )
+
+[node name="Sprite2" type="Sprite" parent="Sprite2"]
+texture = ExtResource( 6 )
+
+[node name="FoamSource" type="Node2D" parent="Sprite2/Sprite2"]
+position = Vector2( -5.61223, 8.15097 )
