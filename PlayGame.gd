@@ -17,5 +17,9 @@ func _ready():
 
 
 func _on_presssed():
-	PlayGame.play()
+	# We only play the voice if we've been in a level. This is to make it less
+	# annoying switching back and forth between screens
+	if Global.can_play_menu_voice:
+		PlayGame.play()
+		Global.can_play_menu_voice = false
 	get_node("../SceneTransition").switch_scene("res://LevelSelect.tscn")

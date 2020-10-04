@@ -175,6 +175,9 @@ func reload_current_level():
 	reload_level(current_level)
 	
 func _ready():
+	# Reenable menu voice
+	Global.can_play_menu_voice = true
+	
 	AIR = Node2D.new()
 	WALL = Node2D.new()
 	ROBOT_FILTER = Node2D.new()
@@ -345,7 +348,7 @@ func _ready():
 #			0, 0, 1, 1, 1, 1, 1, 1
 #		], 6, 1, "just around the bend")
 
-	if Global.intended_level == 14:
+	if Global.intended_level == 18:
 		current_level = Level.new([Vector2(0, 4), Vector2(4, 6), Vector2(6, 2)], [Vector2(3, 4), Vector2(4, 3), Vector2(3, 2)], 7, 7, [
 			0, 0, 0, 0, 2, 0, 0,
 			0, 0, 0, 0, 1, 0, 0,
@@ -356,7 +359,7 @@ func _ready():
 			0, 0, 0, 0, 1, 0, 0
 		], 6, 3, "crossed streams")
 
-	if Global.intended_level == 100:
+	if Global.intended_level == 14:
 		current_level = Level.new([Vector2(0, 1), Vector2(5, 0), Vector2(6, 3)], [Vector2(1, 1), Vector2(2, 1), Vector2(3, 1)], 7, 4, [
 			0, 0, 0, 0, 0, 1, 0,
 			1, 1, 1, 1, 1, 1, 0,
@@ -364,7 +367,7 @@ func _ready():
 			2, 1, 2, 1, 2, 1, 1
 		], 5, 3, "fragile shipment")
 		
-	if Global.intended_level == 100:
+	if Global.intended_level == 16:
 		current_level = Level.new([Vector2(0, 1), Vector2(2, 5), Vector2(4, 5)], [Vector2(2, 3), Vector2(4, 3)], 9,6, [
 			0, 0, 0, 0, 1, 0, 0, 0, 0,
 			1, 1, 3, 1, 3, 1, 2, 1, 2,
@@ -374,7 +377,7 @@ func _ready():
 			0, 0, 1, 0, 1, 0, 0, 0, 0,
 		], 4, 3, "precise packing")
 		
-	if Global.intended_level == 100:
+	if Global.intended_level == 17:
 		current_level = Level.new([Vector2(2, 0), Vector2(0, 4), Vector2(2, 4), Vector2(4, 4), Vector2(2, 8)], [Vector2(2, 1), Vector2(2, 2), Vector2(2, 6), Vector2(2, 7)], 5, 9, [
 			0, 0, 1, 0, 0,
 			0, 0, 1, 0, 0, 
@@ -387,7 +390,7 @@ func _ready():
 			0, 0, 1, 0, 0
 		], 6, 5, "greater distribution center")
 		
-	if Global.intended_level == 100:
+	if Global.intended_level == 15:
 		current_level = Level.new([Vector2(2, 0), Vector2(0, 4), Vector2(2, 4), Vector2(4, 4), Vector2(2, 8)], [Vector2(2, 1), Vector2(2, 2), Vector2(2, 6), Vector2(2, 7)], 5, 9, [
 			0, 0, 1, 0, 0,
 			0, 0, 1, 0, 0, 
@@ -400,7 +403,7 @@ func _ready():
 			0, 0, 1, 0, 0
 		], 6, 5, "distribution center")
 		
-	if Global.intended_level == 100:
+	if Global.intended_level == 19:
 		current_level = Level.new([Vector2(1, 0), Vector2(0, 4), Vector2(4, 5), Vector2(5, 1)], [Vector2(3, 1), Vector2(1, 2), Vector2(2, 4), Vector2(4, 3)], 6, 6, [
 			0, 1, 0, 0, 2, 0,
 			2, 1, 3, 1, 1, 1,

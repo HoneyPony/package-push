@@ -2,6 +2,8 @@ extends Node
 
 var intended_level = 14
 
+var can_play_menu_voice = true
+
 var first_load = true
 
 var music = -1
