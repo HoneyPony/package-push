@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/goodchoice.wav-428e915c434d9ae4bec8eda2f65d6a7a.sample"
+
+[deps]
+
+source_file="res://sound/sam/goodchoice.wav"
+dest_files=[ "res://.import/goodchoice.wav-428e915c434d9ae4bec8eda2f65d6a7a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

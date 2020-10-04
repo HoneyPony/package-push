@@ -26,6 +26,7 @@ Global="*res://Global.gd"
 MenuMusic="*res://MenuMusic.tscn"
 GameMusic="*res://GameMusic.tscn"
 PlayGame="*res://PlayGame.tscn"
+SamLevelSelect="*res://SamLevelSelect.gd"
 
 [display]
 
