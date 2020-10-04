@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/wheels_back.wav-8ac3124fc582bac974b5457879f57477.sample"
+
+[deps]
+
+source_file="res://sound/recorded/wheels_back.wav"
+dest_files=[ "res://.import/wheels_back.wav-8ac3124fc582bac974b5457879f57477.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

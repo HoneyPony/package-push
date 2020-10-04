@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/EngineMaybe.wav-8015e3193c4dea94db4b1b9f55d22d9b.sample"
+
+[deps]
+
+source_file="res://sound/sfxia/EngineMaybe.wav"
+dest_files=[ "res://.import/EngineMaybe.wav-8015e3193c4dea94db4b1b9f55d22d9b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

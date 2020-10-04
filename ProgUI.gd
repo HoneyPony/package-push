@@ -159,6 +159,7 @@ func always_process(delta):
 		tutorial_step += 1
 		if tutorial_step <= tutorial_end:
 			show_tutorial_step(tutorial_step)
+			$Tutorial.play()
 		else:
 			hide_tut(tutorial_end)
 			show_tutorial_step(0)
@@ -243,6 +244,7 @@ func _on_play():
 		$Play.texture = sp_Play
 		playing = false
 		coordinator.stop_playing()
+		random_sound([$StopSAM, $ShutItDown, $StopPrgram])
 	else:
 		$Play.texture = sp_Stop
 		playing = true
@@ -261,6 +263,9 @@ func get_robot_direction(index):
 		dir = Robot.Dir.Left
 		
 	return dir
+	
+func show_rot(which):
+	return which < rows
 
 func _on_alert_rotate(which, angle):
 	if playing:
@@ -285,11 +290,15 @@ func get_tutorial_node(step):
 	return get_node(path)
 	
 func show_tut(f):
+	if f < 1:
+		return
 	var n = get_tutorial_node(f)
 	if n != null:
 		n.show()
 
 func hide_tut(f):
+	if f < 1:
+		return
 	var n = get_tutorial_node(f)
 	if n != null:
 		n.hide()

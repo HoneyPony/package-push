@@ -15,9 +15,11 @@ func _ready():
 	rotation_degrees = 90
 	
 func _process(delta):
+	if ui.show_rot(which):
+		visible = not ui.playing
+	else:
+		visible = false
 
-	
-	visible = not ui.playing
 	if ui.playing:
 		return
 		

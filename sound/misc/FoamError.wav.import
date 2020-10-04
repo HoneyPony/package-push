@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/FoamError.wav-a0eb1c03d1f837a97be7d523f5383cea.sample"
+
+[deps]
+
+source_file="res://sound/misc/FoamError.wav"
+dest_files=[ "res://.import/FoamError.wav-a0eb1c03d1f837a97be7d523f5383cea.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

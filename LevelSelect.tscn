@@ -484,6 +484,7 @@ __meta__ = {
 
 [node name="SceneTransition" parent="." instance=ExtResource( 7 )]
 material = SubResource( 2 )
+use_menu_music = true
 [connection signal="pressed" from="Rows/Row1/LevelButton1" to="Rows/Row1/LevelButton1" method="_on_self_pressed"]
 [connection signal="pressed" from="Rows/Row1/LevelButton2" to="Rows/Row1/LevelButton2" method="_on_self_pressed"]
 [connection signal="pressed" from="Rows/Row1/LevelButton3" to="Rows/Row1/LevelButton3" method="_on_self_pressed"]

@@ -1,38 +1,40 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=18 format=2]
 
+[ext_resource path="res://sound/recorded/wheels.wav" type="AudioStream" id=1]
 [ext_resource path="res://Robot.gd" type="Script" id=2]
+[ext_resource path="res://sound/recorded/rotate.wav" type="AudioStream" id=3]
+[ext_resource path="res://sound/recorded/wheels_back.wav" type="AudioStream" id=4]
+[ext_resource path="res://sound/recorded/foam.wav" type="AudioStream" id=5]
 [ext_resource path="res://vector/Robot.svg" type="Texture" id=6]
+[ext_resource path="res://sound/recorded/double_rotate_2.wav" type="AudioStream" id=7]
+[ext_resource path="res://sound/recorded/wheels_fail.wav" type="AudioStream" id=8]
+[ext_resource path="res://sound/misc/FoamError.wav" type="AudioStream" id=9]
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=1]
 resource_name = "DownIdle"
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=2]
 resource_name = "DownMove"
 length = 0.4
 loop = true
 
-[sub_resource type="Animation" id=2]
-resource_name = "LeftIdle"
+[sub_resource type="Animation" id=3]
 
 [sub_resource type="Animation" id=4]
 resource_name = "LeftMove"
 length = 0.4
 loop = true
 
-[sub_resource type="Animation" id=1]
-resource_name = "RightIdle"
+[sub_resource type="Animation" id=5]
 
-[sub_resource type="Animation" id=3]
-resource_name = "RightMove"
+[sub_resource type="Animation" id=6]
 length = 0.4
 loop = true
 step = 0.2
 
-[sub_resource type="Animation" id=6]
-resource_name = "UpIdle"
+[sub_resource type="Animation" id=7]
 
-[sub_resource type="Animation" id=5]
-resource_name = "UpMove"
+[sub_resource type="Animation" id=8]
 length = 0.4
 loop = true
 
@@ -43,14 +45,14 @@ script = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RightIdle"
-anims/DownIdle = SubResource( 7 )
-anims/DownMove = SubResource( 8 )
-anims/LeftIdle = SubResource( 2 )
+anims/DownIdle = SubResource( 1 )
+anims/DownMove = SubResource( 2 )
+anims/LeftIdle = SubResource( 3 )
 anims/LeftMove = SubResource( 4 )
-anims/RightIdle = SubResource( 1 )
-anims/RightMove = SubResource( 3 )
-anims/UpIdle = SubResource( 6 )
-anims/UpMove = SubResource( 5 )
+anims/RightIdle = SubResource( 5 )
+anims/RightMove = SubResource( 6 )
+anims/UpIdle = SubResource( 7 )
+anims/UpMove = SubResource( 8 )
 
 [node name="Sprite2" type="Sprite" parent="."]
 position = Vector2( 32, 32 )
@@ -58,3 +60,41 @@ texture = ExtResource( 6 )
 
 [node name="FoamSource" type="Node2D" parent="Sprite2"]
 position = Vector2( -5.61223, 8.15097 )
+
+[node name="Wheels" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -4.0
+bus = "SFX_Other"
+
+[node name="WheelsFail" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -4.0
+bus = "SFX_Other"
+
+[node name="WheelsBack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -3.0
+bus = "SFX_Other"
+
+[node name="Rotate" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -6.0
+bus = "SFX_Other"
+
+[node name="DoubleRotate" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -6.0
+bus = "SFX_Other"
+
+[node name="Foam" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -8.078
+bus = "SFX_Other"
+
+[node name="FoamError" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -8.0
+bus = "SFX_Other"
+
+[node name="Number" type="Sprite" parent="."]
+centered = false

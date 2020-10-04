@@ -3,6 +3,8 @@ extends TextureRect
 var target_scene = null
 var leave_timer = 0
 
+export var use_menu_music = false
+
 var approach_timer = 1.0
 
 var SPEED = 1.2
@@ -14,6 +16,13 @@ func _ready():
 		material.set_shader_param("time", 0.0)
 	else:
 		material.set_shader_param("time", 1.0)
+		$Arrive.play()
+		
+	if use_menu_music:
+		print("MENU MSUIC")
+		Global.menu_music()
+	else:
+		Global.game_music()
 
 func _process(delta):
 	if approach_timer > 0:
@@ -32,4 +41,5 @@ func _process(delta):
 func switch_scene(target):
 	target_scene = target
 	leave_timer = 1.0
+	$Leave.play()
 		

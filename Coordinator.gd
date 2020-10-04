@@ -2,6 +2,7 @@ extends Node2D
 
 var is_playing = false
 var is_manual = false
+var has_won = false
 
 var TIME_PER_TICK = 0.2
 var tick_timer = 0
@@ -92,6 +93,8 @@ func reload_level(lvl: Level):
 		robots.append(bot)
 		
 		bot.direction = the_ui.get_robot_direction(bot_index)
+		bot.which_robot = bot_index + 1
+		bot.update_texture(self)
 		bot.set_dir_instant()
 		bot_index += 1
 		
@@ -227,7 +230,7 @@ func _ready():
 		], 3, 3)
 
 
-	if Global.intended_level == 6:
+	if Global.intended_level == 12: # THis level is hard. It was swapped with 12
 		current_level = Level.new([Vector2(0, 4), Vector2(5, 6)], [Vector2(4, 4), Vector2(5, 3)], 9, 7, [
 			0, 0, 0, 0, 0, 2, 0, 0, 0,
 			0, 0, 0, 0, 0, 1, 0, 0, 0,
@@ -239,19 +242,19 @@ func _ready():
 		], 6, 2) # 6 x 2
 
 	if Global.intended_level == 7:
-		current_level = Level.new([Vector2(0, 5), Vector2(4, 5)], [Vector2(4, 2), Vector2(4, 8)], 5, 11, [
+		current_level = Level.new([Vector2(4, 5)], [Vector2(4, 3), Vector2(4, 7)], 5, 11, [
+			0, 0, 0, 0, 0,
 			0, 0, 0, 0, 2,
 			0, 0, 0, 0, 1,
 			0, 0, 0, 0, 1,
 			0, 0, 0, 0, 1,
 			0, 0, 0, 0, 1,
-			1, 1, 1, 1, 1,
 			0, 0, 0, 0, 1,
 			0, 0, 0, 0, 1,
 			0, 0, 0, 0, 1,
-			0, 0, 0, 0, 1,
-			0, 0, 0, 0, 2
-		], 3, 2) # 3 x 2
+			0, 0, 0, 0, 2,
+			0, 0, 0, 0, 0
+		], 3, 1) # 3 x 2
 		
 	if Global.intended_level == 8:
 		current_level = Level.new([Vector2(1, 2), Vector2(0, 6), Vector2(5, 7)], [Vector2(1, 4), Vector2(2, 6), Vector2(5, 4)], 6, 8, [
@@ -288,7 +291,7 @@ func _ready():
 			1, 0, 0, 0, 0, 0
 		], 3, 1) # 3+ x 1
 	
-	if Global.intended_level == 12:
+	if Global.intended_level == 6:
 		current_level = Level.new([Vector2(4, 4), Vector2(9, 4)], [Vector2(4, 2), Vector2(4, 6), Vector2(2, 4), Vector2(6, 4), Vector2(9, 2), Vector2(9, 6)], 10, 9, [
 			0, 0, 0, 0, 2, 0, 0, 0, 0, 2,
 			0, 0, 0, 0, 1, 0, 0, 0, 0, 1,
@@ -301,7 +304,13 @@ func _ready():
 			0, 0, 0, 0, 2, 0, 0, 0, 0, 2
 		], 4, 2) # 3+ x 1
 		
-	if Global.intended_level == 1000:
+	if Global.intended_level == 13:
+		current_level = Level.new([Vector2(0, 0)], [Vector2(5, 0), Vector2(5, 1)], 7, 2, [
+			1, 1, 1, 1, 3, 1, 2,
+			1, 1, 1, 1, 3, 1, 2
+		], 12, 1)
+		
+	if Global.intended_level == 14:
 		current_level = Level.new([Vector2(1, 0), Vector2(0, 4), Vector2(4, 5), Vector2(5, 1)], [Vector2(3, 1), Vector2(1, 2), Vector2(2, 4), Vector2(4, 3)], 6, 6, [
 			0, 1, 0, 0, 2, 0,
 			2, 1, 3, 1, 1, 1,
@@ -515,6 +524,7 @@ func tick():
 			return
 	# Won the level!
 	the_ui.won()
+	has_won = true
 	is_playing = false
 	
 func play(delta):

@@ -21,6 +21,15 @@ enum Ins {
 
 var direction = Dir.Right
 
+var which_robot = 0
+var coordinator = null
+
+func update_texture(coord):
+	var tex_name = "res://vector/Nums/Num" + String(which_robot) + ".svg"
+	
+	$Number.texture = load(tex_name)
+	coordinator = coord
+
 func _ready():
 	instructions = []
 
@@ -64,6 +73,9 @@ func handle_instruction(i, grid):
 		return
 
 	if i == Ins.Forward:
+		var gx = grid_x
+		var gy = grid_y
+		
 		if direction == Dir.Right:
 			grid.move_object_right(grid_x, grid_y)
 		elif direction == Dir.Left:
@@ -73,7 +85,15 @@ func handle_instruction(i, grid):
 		elif direction == Dir.Down:
 			grid.move_object_down(grid_x, grid_y)
 			
+		if gx != grid_x or gy != grid_y:
+			$Wheels.play()
+		else:
+			$FoamError.play()
+			
 	if i == Ins.Backward:
+		var gx = grid_x
+		var gy = grid_y
+	
 		if direction == Dir.Left:
 			grid.move_object_right(grid_x, grid_y)
 		elif direction == Dir.Right:
@@ -82,18 +102,27 @@ func handle_instruction(i, grid):
 			grid.move_object_up(grid_x, grid_y)
 		elif direction == Dir.Up:
 			grid.move_object_down(grid_x, grid_y)
+			
+		if gx != grid_x or gy != grid_y:
+			$WheelsBack.play()
+		else:
+			$FoamError.play()
 		
 	if i == Ins.Left:
+		$Rotate.play()
 		rotate_left()
 		
 	if i == Ins.Right:
+		$Rotate.play()
 		rotate_right()
 		
 	if i == Ins.Spin:
+		$DoubleRotate.play()
 		rotate_right()
 		rotate_right()
 		
 	if i == Ins.Foam:
+		
 		var x = grid_x
 		var y = grid_y
 		
@@ -116,10 +145,19 @@ func handle_instruction(i, grid):
 			
 			grid.set_grid_ref(x, y, foam)
 			
+			$Foam.play()
+		else:
+			$FoamError.play()
+			
 func set_dir_instant():
 	$Sprite2.rotation_degrees = fmod(get_target_direction(), 360)
 
 func _process(delta):
+	if coordinator != null:
+		$Number.visible = (not coordinator.is_playing) and (not coordinator.has_won)
+	
+	$Number.global_rotation_degrees = 0
+	
 	var dir = $Sprite2.rotation_degrees
 	var tar = get_target_direction()
 	

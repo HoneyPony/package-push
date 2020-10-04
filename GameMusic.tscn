@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://music/LD47Game.ogg" type="AudioStream" id=1]
+
+[node name="GameMusic" type="AudioStreamPlayer"]
+stream = ExtResource( 1 )
