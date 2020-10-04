@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Super Box Bot's Package Push"
-run/main_scene="res://MainMenu.tscn"
+run/main_scene="res://Game.tscn"
 config/icon="res://vector/Icon.png"
 
 [autoload]

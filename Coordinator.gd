@@ -336,7 +336,47 @@ func _ready():
 			1, 1, 1, 1, 3, 1, 2
 		], 12, 1, "Roadblock")
 		
+#	if Global.intended_level == 14: # Could probably work with some cheese, but would be too hard for end user
+#		current_level = Level.new([Vector2(0, 3)], [Vector2(6, 1)], 8, 5, [
+#			0, 0, 0, 0, 0, 0, 2, 0,
+#			0, 0, 0, 0, 0, 0, 1, 0,
+#			0, 0, 0, 0, 0, 0, 3, 0,
+#			1, 1, 1, 1, 0, 0, 1, 0,
+#			0, 0, 1, 1, 1, 1, 1, 1
+#		], 6, 1, "just around the bend")
+
 	if Global.intended_level == 14:
+		current_level = Level.new([Vector2(0, 1), Vector2(5, 0), Vector2(6, 3)], [Vector2(1, 1), Vector2(2, 1), Vector2(3, 1)], 7, 4, [
+			0, 0, 0, 0, 0, 1, 0,
+			1, 1, 1, 1, 1, 1, 0,
+			0, 0, 0, 0, 0, 1, 0,
+			2, 1, 2, 1, 2, 1, 1
+		], 5, 3, "fragile shipment")
+		
+	if Global.intended_level == 100:
+		current_level = Level.new([Vector2(0, 1), Vector2(2, 5), Vector2(4, 5)], [Vector2(2, 3), Vector2(4, 3)], 9,6, [
+			0, 0, 0, 0, 1, 0, 0, 0, 0,
+			1, 1, 3, 1, 3, 1, 2, 1, 2,
+			0, 0, 1, 0, 1, 0, 0, 0, 0,
+			0, 0, 1, 0, 1, 0, 0, 0, 0,
+			0, 0, 1, 0, 1, 0, 0, 0, 0,
+			0, 0, 1, 0, 1, 0, 0, 0, 0,
+		], 4, 3, "precise packing")
+		
+	if Global.intended_level == 100:
+		current_level = Level.new([Vector2(2, 0), Vector2(0, 4), Vector2(2, 4), Vector2(4, 4), Vector2(2, 8)], [Vector2(2, 1), Vector2(2, 2), Vector2(2, 6), Vector2(2, 7)], 5, 9, [
+			0, 0, 1, 0, 0,
+			0, 0, 1, 0, 0, 
+			2, 0, 1, 0, 2, 
+			2, 0, 1, 0, 2, 
+			1, 1, 1, 1, 1, 
+			1, 0, 1, 0, 1, 
+			0, 0, 1, 0, 0, 
+			0, 0, 1, 0, 0, 
+			0, 0, 1, 0, 0
+		], 6, 5, "distribution center")
+		
+	if Global.intended_level == 100:
 		current_level = Level.new([Vector2(1, 0), Vector2(0, 4), Vector2(4, 5), Vector2(5, 1)], [Vector2(3, 1), Vector2(1, 2), Vector2(2, 4), Vector2(4, 3)], 6, 6, [
 			0, 1, 0, 0, 2, 0,
 			2, 1, 3, 1, 1, 1,
