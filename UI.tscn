@@ -465,7 +465,7 @@ custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
 text = "However, this first example is not too bad. We
 need to tell the robot to move straight and push
-the box onto the checkboard goal square.
+the box onto the checkerboard goal square.
 
 Press space to continue"
 __meta__ = {
@@ -535,7 +535,7 @@ that number on screen. The arrows next to
 the numbers let you change the robot's
 starting orientation.
 
-At somepoint you may be expected to handle
+At some point you may be expected to handle
 five separate robots!
 
 Press space to continue"
@@ -940,6 +940,7 @@ __meta__ = {
 
 [node name="Pickup" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 16 )
+bus = "SFX_Other"
 
 [node name="Tutorial" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 39 )
@@ -947,12 +948,15 @@ bus = "SFX_Other"
 
 [node name="Place" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 20 )
+bus = "SFX_Other"
 
 [node name="Throwaway" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 21 )
+bus = "SFX_Other"
 
 [node name="Rotation" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 22 )
+bus = "SFX_Other"
 
 [node name="OutlinePlay" type="Sprite" parent="."]
 visible = false

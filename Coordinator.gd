@@ -217,7 +217,7 @@ func _ready():
 			1, 1, 1, 0, 1, 1, 1,
 			0, 0, 1, 0, 1, 0, 0,
 			0, 0, 1, 1, 1, 0, 0
-		], 9, 1, "A loopy loop")
+		], 9, 1, "A winding loop")
 	
 	if Global.intended_level == 3:
 		the_ui.tutorial_step = 19

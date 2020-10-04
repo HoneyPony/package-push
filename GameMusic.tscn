@@ -4,3 +4,4 @@
 
 [node name="GameMusic" type="AudioStreamPlayer"]
 stream = ExtResource( 1 )
+bus = "Music"
