@@ -4,17 +4,11 @@ var the_bus
 
 export var which = "Master"
 
-var MIN = -40
-
 func db_to_val(db):
-	var t = (db - (MIN)) / (2 - (MIN))
-	
-	return 0 + 100 * t
+	return db2linear(db) * 100.0 # legacy: sliders are 100
 	
 func val_to_db(val):
-	var t = val / 100.0
-	
-	return MIN + (2 - (MIN)) * t
+	return linear2db(val / 100.0) # legacy: sliders are 100
 	 
 func _ready():
 	the_bus = AudioServer.get_bus_index(which)

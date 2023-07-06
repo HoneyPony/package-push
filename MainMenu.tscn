@@ -203,9 +203,6 @@ texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 4 )
 expand = true
 script = ExtResource( 12 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="OptionsButton"]
 margin_left = 16.064
