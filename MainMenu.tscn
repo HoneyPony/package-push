@@ -13,12 +13,12 @@
 [ext_resource path="res://vector/SliderLight.svg" type="Texture" id=11]
 [ext_resource path="res://OptionsButton.gd" type="Script" id=12]
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.270588, 0.270588, 0.270588, 1 )
 expand_margin_top = 4.0
 expand_margin_bottom = 4.0
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="Shader" id=2]
 resource_local_to_scene = true
 code = "shader_type canvas_item;
 render_mode blend_mix;
@@ -40,11 +40,10 @@ void fragment() {
 	uv.x += frame;
 	COLOR = texture(anim, uv);
 }"
-custom_defines = ""
 
-[sub_resource type="ShaderMaterial" id=2]
+[sub_resource type="ShaderMaterial" id=3]
 resource_local_to_scene = true
-shader = SubResource( 1 )
+shader = SubResource( 2 )
 shader_param/time = 0.0
 shader_param/anim = ExtResource( 7 )
 
@@ -83,8 +82,8 @@ margin_left = 16.064
 margin_top = 13.8591
 margin_right = 129.064
 margin_bottom = 58.8591
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Play!"
 __meta__ = {
 "_edit_lock_": true
@@ -96,20 +95,19 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -406.954
-margin_top = -266.88
-margin_right = -30.9543
-margin_bottom = -115.88
+margin_left = -400.005
+margin_top = -316.301
+margin_right = -24.0045
+margin_bottom = -103.301
 color = Color( 0.941176, 0.85098, 0.466667, 1 )
 
 [node name="ColorRect" type="ColorRect" parent="Options"]
-margin_left = 8.6319
-margin_top = 8.00639
-margin_right = 364.632
-margin_bottom = 139.006
+margin_left = 9.0
+margin_top = 8.0
+margin_right = 365.0
+margin_bottom = 202.0
 color = Color( 0.94902, 0.894118, 0.658824, 1 )
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -118,8 +116,8 @@ margin_left = 16.1636
 margin_top = 19.5939
 margin_right = 187.164
 margin_bottom = 64.5939
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Music"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -130,9 +128,21 @@ margin_left = 16.1636
 margin_top = 80.8351
 margin_right = 187.164
 margin_bottom = 125.835
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Sfx"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Music3" type="Label" parent="Options/ColorRect"]
+margin_left = 11.2535
+margin_top = 142.394
+margin_right = 182.254
+margin_bottom = 187.394
+custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Voice"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -144,7 +154,7 @@ margin_right = 336.542
 margin_bottom = 72.7439
 custom_icons/grabber_highlight = ExtResource( 11 )
 custom_icons/grabber = ExtResource( 10 )
-custom_styles/slider = SubResource( 3 )
+custom_styles/slider = SubResource( 1 )
 script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -158,12 +168,26 @@ margin_right = 335.207
 margin_bottom = 133.479
 custom_icons/grabber_highlight = ExtResource( 11 )
 custom_icons/grabber = ExtResource( 10 )
-custom_styles/slider = SubResource( 3 )
+custom_styles/slider = SubResource( 1 )
 script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 which = "SFX_All"
+
+[node name="HSlider3" type="HSlider" parent="Options/ColorRect"]
+margin_left = 166.54
+margin_top = 121.017
+margin_right = 334.54
+margin_bottom = 198.017
+custom_icons/grabber_highlight = ExtResource( 11 )
+custom_icons/grabber = ExtResource( 10 )
+custom_styles/slider = SubResource( 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+which = "SAM_Mix"
 
 [node name="OptionsButton" type="TextureButton" parent="."]
 anchor_left = 1.0
@@ -188,19 +212,21 @@ margin_left = 16.064
 margin_top = 13.8591
 margin_right = 129.064
 margin_bottom = 58.8591
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Options"
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="SceneTransition" parent="." instance=ExtResource( 8 )]
-material = SubResource( 2 )
+material = SubResource( 3 )
 margin_left = 0.749146
 margin_right = 0.749146
 use_menu_music = true
+
 [connection signal="pressed" from="TextureButton" to="TextureButton" method="_on_presssed"]
 [connection signal="value_changed" from="Options/ColorRect/HSlider" to="Options/ColorRect/HSlider" method="_on_changed"]
 [connection signal="value_changed" from="Options/ColorRect/HSlider2" to="Options/ColorRect/HSlider2" method="_on_changed"]
+[connection signal="value_changed" from="Options/ColorRect/HSlider3" to="Options/ColorRect/HSlider3" method="_on_changed"]
 [connection signal="pressed" from="OptionsButton" to="OptionsButton" method="_on_pressed"]

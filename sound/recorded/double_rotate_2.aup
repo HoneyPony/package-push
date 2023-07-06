@@ -6,7 +6,7 @@
 		<waveclip offset="0.00000000" colorindex="0">
 			<sequence maxsamples="262144" sampleformat="262159" numsamples="8682">
 				<waveblock start="0">
-					<simpleblockfile filename="e0000e98.au" len="8682" min="-0.285626" max="0.256924" rms="0.089099"/>
+					<simpleblockfile filename="e0000b88.au" len="8682" min="-0.239969" max="0.217388" rms="0.085419"/>
 				</waveblock>
 			</sequence>
 			<envelope numpoints="0"/>

@@ -188,11 +188,20 @@ func always_process(delta):
 		if tutorial_step <= tutorial_end + 1:
 			$Tutorial.play()
 	
+var has_loaded_next_level = false
+	
 func _process(delta):
 	ensure_viewport_position()
 	
 	if has_won:
+		
+		
 		if Input.is_action_just_released("mouse"):
+			if has_loaded_next_level:
+				return
+			
+			has_loaded_next_level = true
+			
 			Global.intended_level += 1
 			if Global.intended_level >= 20:
 				get_node("/root/Root/CanvasLayer/SceneTransition").switch_scene("res://WonGame.tscn")
