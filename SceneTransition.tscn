@@ -28,7 +28,6 @@ void fragment() {
 	uv.x += frame;
 	COLOR = texture(anim, uv);
 }"
-custom_defines = ""
 
 [sub_resource type="ShaderMaterial" id=2]
 resource_local_to_scene = true

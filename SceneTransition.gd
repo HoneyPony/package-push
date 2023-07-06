@@ -1,6 +1,6 @@
 extends TextureRect
 
-var target_scene = null
+var target_scene: PackedScene = null
 var leave_timer = 0
 
 export var use_menu_music = false
@@ -37,9 +37,9 @@ func _process(delta):
 		material.set_shader_param("time", 1.0 - leave_timer)
 	else:
 		if target_scene != null:
-			get_tree().change_scene(target_scene)
+			get_tree().change_scene_to(target_scene)
 		
-func switch_scene(target):
+func switch_scene(target: PackedScene):
 	target_scene = target
 	leave_timer = 1.0
 	$Leave.play()

@@ -204,9 +204,9 @@ func _process(delta):
 			
 			Global.intended_level += 1
 			if Global.intended_level >= 20:
-				get_node("/root/Root/CanvasLayer/SceneTransition").switch_scene("res://WonGame.tscn")
+				get_node("/root/Root/CanvasLayer/SceneTransition").switch_scene(Global.WonGame)
 			else:
-				get_node("/root/Root/CanvasLayer/SceneTransition").switch_scene("res://Game.tscn")
+				get_node("/root/Root/CanvasLayer/SceneTransition").switch_scene(Global.Game)
 		return
 	
 	always_process(delta)
@@ -362,7 +362,7 @@ func show_tutorial_step(step):
 	$OutlineFoam.visible = step == 21
 	
 func _on_back():
-	get_node("/root/Root/CanvasLayer/SceneTransition").switch_scene("res://LevelSelect.tscn")
+	get_node("/root/Root/CanvasLayer/SceneTransition").switch_scene(Global.LevelSelect)
 
 
 func _on_step():

@@ -1,5 +1,10 @@
 extends Node
 
+var LevelSelect = preload("res://LevelSelect.tscn")
+var WonGame = preload("res://WonGame.tscn")
+var Game = preload("res://Game.tscn")
+var MainMenu = preload("res://MainMenu.tscn")
+
 var intended_level = 14
 
 var can_play_menu_voice = true

@@ -32,7 +32,6 @@ void fragment() {
 	uv.x += frame;
 	COLOR = texture(anim, uv);
 }"
-custom_defines = ""
 
 [sub_resource type="ShaderMaterial" id=2]
 resource_local_to_scene = true
@@ -105,8 +104,8 @@ margin_left = 29.8938
 margin_top = 13.685
 margin_right = 133.894
 margin_bottom = 74.685
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "1"
 __meta__ = {
 "_edit_lock_": true
@@ -130,8 +129,8 @@ margin_left = 29.8938
 margin_top = 13.685
 margin_right = 133.894
 margin_bottom = 74.685
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "2
 "
 __meta__ = {
@@ -156,8 +155,8 @@ margin_left = 29.8938
 margin_top = 13.685
 margin_right = 133.894
 margin_bottom = 74.685
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "3
 "
 __meta__ = {
@@ -182,8 +181,8 @@ margin_left = 29.8938
 margin_top = 13.685
 margin_right = 133.894
 margin_bottom = 74.685
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "4"
 __meta__ = {
 "_edit_lock_": true
@@ -207,8 +206,8 @@ margin_left = 29.8938
 margin_top = 13.685
 margin_right = 133.894
 margin_bottom = 74.685
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "5
 "
 __meta__ = {
@@ -241,8 +240,8 @@ margin_left = 29.8938
 margin_top = 13.685
 margin_right = 133.894
 margin_bottom = 74.685
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "6"
 __meta__ = {
 "_edit_lock_": true
@@ -266,8 +265,8 @@ margin_left = 29.8938
 margin_top = 13.685
 margin_right = 133.894
 margin_bottom = 74.685
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "7"
 __meta__ = {
 "_edit_lock_": true
@@ -291,8 +290,8 @@ margin_left = 29.8938
 margin_top = 13.685
 margin_right = 133.894
 margin_bottom = 74.685
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "8
 "
 __meta__ = {
@@ -317,8 +316,8 @@ margin_left = 29.8938
 margin_top = 13.685
 margin_right = 133.894
 margin_bottom = 74.685
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "9"
 __meta__ = {
 "_edit_lock_": true
@@ -342,8 +341,8 @@ margin_left = 19.0
 margin_top = 13.0
 margin_right = 134.0
 margin_bottom = 74.0
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "10"
 
 [node name="Row3" type="HBoxContainer" parent="Rows"]
@@ -372,8 +371,8 @@ margin_left = 22.3537
 margin_top = 13.2882
 margin_right = 126.354
 margin_bottom = 74.2882
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "11"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -397,8 +396,8 @@ margin_left = 20.7663
 margin_top = 14.0819
 margin_right = 124.766
 margin_bottom = 75.0819
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "12"
 
 [node name="LevelButton3" type="TextureButton" parent="Rows/Row3"]
@@ -419,8 +418,8 @@ margin_left = 19.7296
 margin_top = 14.4301
 margin_right = 123.73
 margin_bottom = 107.43
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "13
 "
 
@@ -442,8 +441,8 @@ margin_left = 16.9759
 margin_top = 13.2395
 margin_right = 120.976
 margin_bottom = 74.2395
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "14"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -467,8 +466,8 @@ margin_left = 17.2182
 margin_top = 12.5545
 margin_right = 132.218
 margin_bottom = 73.5545
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "15"
 
 [node name="Row4" type="HBoxContainer" parent="Rows"]
@@ -497,8 +496,8 @@ margin_left = 22.3537
 margin_top = 13.2882
 margin_right = 126.354
 margin_bottom = 74.2882
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "16"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -522,8 +521,8 @@ margin_left = 20.7663
 margin_top = 14.0819
 margin_right = 124.766
 margin_bottom = 75.0819
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "17"
 
 [node name="LevelButton3" type="TextureButton" parent="Rows/Row4"]
@@ -544,8 +543,8 @@ margin_left = 19.7296
 margin_top = 14.4301
 margin_right = 123.73
 margin_bottom = 107.43
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "18"
 
 [node name="LevelButton4" type="TextureButton" parent="Rows/Row4"]
@@ -566,8 +565,8 @@ margin_left = 16.9759
 margin_top = 13.2395
 margin_right = 120.976
 margin_bottom = 74.2395
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "19"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -591,16 +590,16 @@ margin_left = 17.2182
 margin_top = 12.5545
 margin_right = 132.218
 margin_bottom = 73.5545
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "20"
 
 [node name="Label" type="Label" parent="."]
 anchor_right = 1.0
 margin_top = 16.0
 margin_bottom = 72.0
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "Level Select"
 align = 1
 __meta__ = {
@@ -630,8 +629,8 @@ margin_left = 17.8989
 margin_top = 14.1853
 margin_right = 132.899
 margin_bottom = 75.1853
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "Back"
 __meta__ = {
 "_edit_lock_": true,
@@ -641,6 +640,7 @@ __meta__ = {
 [node name="SceneTransition" parent="." instance=ExtResource( 7 )]
 material = SubResource( 2 )
 use_menu_music = true
+
 [connection signal="pressed" from="Rows/Row1/LevelButton1" to="Rows/Row1/LevelButton1" method="_on_self_pressed"]
 [connection signal="pressed" from="Rows/Row1/LevelButton2" to="Rows/Row1/LevelButton2" method="_on_self_pressed"]
 [connection signal="pressed" from="Rows/Row1/LevelButton3" to="Rows/Row1/LevelButton3" method="_on_self_pressed"]

@@ -7,4 +7,4 @@ func load_level(level):
 	
 	SamLevelSelect.play()
 	
-	transition.switch_scene("res://Game.tscn")
+	transition.switch_scene(Global.Game)

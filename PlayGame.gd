@@ -22,4 +22,4 @@ func _on_presssed():
 	if Global.can_play_menu_voice:
 		PlayGame.play()
 		Global.can_play_menu_voice = false
-	get_node("../SceneTransition").switch_scene("res://LevelSelect.tscn")
+	get_node("../SceneTransition").switch_scene(Global.LevelSelect)

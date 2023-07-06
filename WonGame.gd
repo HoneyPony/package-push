@@ -14,4 +14,4 @@ func _ready():
 	
 func _on_presssed():
 	
-	get_node("../SceneTransition").switch_scene("res://LevelSelect.tscn")
+	get_node("../SceneTransition").switch_scene(Global.LevelSelect)
