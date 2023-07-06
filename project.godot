@@ -19,6 +19,10 @@ run/main_scene="res://MainMenu.tscn"
 boot_splash/image="res://vector/BootSplash.png"
 config/icon="res://vector/Icon.png"
 
+[audio]
+
+output_latency.web=15
+
 [autoload]
 
 Global="*res://Global.gd"

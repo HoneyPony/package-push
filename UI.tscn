@@ -387,8 +387,8 @@ margin_left = -360.463
 margin_top = -447.888
 margin_right = 365.537
 margin_bottom = -212.888
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Hello! Welcome to 
 This tutorial will teach you how to play!
 
@@ -405,8 +405,8 @@ margin_left = 284.877
 margin_top = -1.2601
 margin_right = 940.877
 margin_bottom = 43.7399
-custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
 text = "Super Box Bot's Package Push!"
 
 [node name="Tutorial_2" type="Label" parent="CanvasLayer/Tutorial"]
@@ -419,8 +419,8 @@ margin_left = -360.216
 margin_top = -379.875
 margin_right = 262.784
 margin_bottom = -212.875
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Your task is to program robots to push
 packages to their destinations. However,
 there's a catch!
@@ -440,8 +440,8 @@ margin_left = -360.174
 margin_top = -379.801
 margin_right = 305.826
 margin_bottom = -212.801
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Each robot can only execute a repeating
 loop of instructions. So it won't usually be
 possible to use a straightforward solution.
@@ -461,8 +461,8 @@ margin_left = -360.317
 margin_top = -380.417
 margin_right = 379.683
 margin_bottom = -213.417
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "However, this first example is not too bad. We
 need to tell the robot to move straight and push
 the box onto the checkerboard goal square.
@@ -482,8 +482,8 @@ margin_left = -360.086
 margin_top = -448.281
 margin_right = 320.914
 margin_bottom = -213.281
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "This panel is the \"instruction palette.\"
 
 It contains instructions you can use
@@ -505,8 +505,8 @@ margin_left = -359.777
 margin_top = -447.739
 margin_right = 321.223
 margin_bottom = -212.739
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "This panel contains the program for each
 robot. You can drag instructions from the
 palette to this panel to program the robot.
@@ -528,8 +528,8 @@ margin_left = -359.934
 margin_top = -516.146
 margin_right = 321.066
 margin_bottom = -213.146
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Each number corresponds to the robot with
 that number on screen. The arrows next to
 the numbers let you change the robot's
@@ -553,8 +553,8 @@ margin_left = -360.128
 margin_top = -414.165
 margin_right = 431.872
 margin_bottom = -111.165
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Once you are done programming the robots,
 you can push this button to run your program.
 you can also push the \"step\" button to run
@@ -575,8 +575,8 @@ margin_left = -360.081
 margin_top = -311.815
 margin_right = 431.919
 margin_bottom = -8.81561
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "This instruction moves the robot forward.
 
 Press space to continue"
@@ -594,8 +594,8 @@ margin_left = -360.078
 margin_top = -379.764
 margin_right = 431.922
 margin_bottom = -76.7637
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "This instruction moves the robot backwards.
 
 That's it for now! See you in the next puzzle!
@@ -615,8 +615,8 @@ margin_left = -371.31
 margin_top = -306.527
 margin_right = 420.689
 margin_bottom = -3.52719
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Welcome to the second level!
 
 Press space to continue"
@@ -634,8 +634,8 @@ margin_left = -370.901
 margin_top = -374.818
 margin_right = 348.099
 margin_bottom = -71.8175
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Here moving straight is not going to be enough.
 
 Thankfully, there's more that we can do.
@@ -655,8 +655,8 @@ margin_left = -371.106
 margin_top = -443.124
 margin_right = 366.894
 margin_bottom = -140.124
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "First, you might notice that your robot is not
 facing down, even though it needs to move down.
 
@@ -678,8 +678,8 @@ margin_left = -371.454
 margin_top = -375.21
 margin_right = 384.546
 margin_bottom = -72.2098
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Now that it's facing the right way, you'll have
 to figure out a way to create a 5-instruction loop
 that gets the robot all the way around the circle.
@@ -699,8 +699,8 @@ margin_left = -370.544
 margin_top = -408.769
 margin_right = 314.456
 margin_bottom = -105.769
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Conveniently, you have some ways to rotate
 your robot.
 
@@ -721,8 +721,8 @@ margin_left = -371.038
 margin_top = -306.966
 margin_right = 270.962
 margin_bottom = -3.96628
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "This instruction rotates the robot right.
 
 Press space to continue"
@@ -740,8 +740,8 @@ margin_left = -371.068
 margin_top = -307.406
 margin_right = 340.932
 margin_bottom = -4.40579
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "This instruction rotates the robot 180 degrees.
 
 Press space to continue"
@@ -759,8 +759,8 @@ margin_left = -370.834
 margin_top = -307.306
 margin_right = 148.166
 margin_bottom = -4.30569
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "That's it for this puzzle! Good luck!
 
 Press space to continue"
@@ -778,8 +778,8 @@ margin_left = -350.749
 margin_top = -440.127
 margin_right = 308.251
 margin_bottom = -137.128
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Do you see that gray tile in front
 of you?
 
@@ -801,8 +801,8 @@ margin_left = -350.825
 margin_top = -440.265
 margin_right = 345.175
 margin_bottom = -137.266
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Well this is where your robot's last ability
 comes into play.
 
@@ -824,8 +824,8 @@ margin_left = -350.849
 margin_top = -474.385
 margin_right = 359.151
 margin_bottom = -171.386
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Conveniently, blocks of foam will also fit
 under the gray tile.
 
@@ -848,8 +848,8 @@ margin_left = -351.187
 margin_top = -405.898
 margin_right = 322.813
 margin_bottom = -102.898
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "You're going to want to create a block of
 foam, push it, and then create more...
 
@@ -870,8 +870,8 @@ margin_left = -350.84
 margin_top = -473.885
 margin_right = 355.16
 margin_bottom = -170.885
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "A little tip... Sometimes your initial program
 won't work because one robot does something
 before the other.
@@ -891,8 +891,8 @@ margin_left = 16.6883
 margin_top = -46.6171
 margin_right = 678.688
 margin_bottom = -1.61707
-custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = SubResource( 6 )
 text = "\"Untitled level\""
 __meta__ = {
 "_edit_use_anchors_": false
@@ -920,8 +920,8 @@ margin_left = 18.0411
 margin_top = 15.1361
 margin_right = 122.041
 margin_bottom = 60.1361
-custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+custom_fonts/font = SubResource( 6 )
 text = "Back"
 __meta__ = {
 "_edit_lock_": true
@@ -1036,6 +1036,7 @@ position = Vector2( 78.2527, 8 )
 z_index = 5
 texture = ExtResource( 45 )
 centered = false
+
 [connection signal="clicked" from="Palette/Foam" to="." method="_on_new_foam"]
 [connection signal="clicked" from="Palette/Right" to="." method="_on_new_right"]
 [connection signal="clicked" from="Palette/Left" to="." method="_on_new_left"]
