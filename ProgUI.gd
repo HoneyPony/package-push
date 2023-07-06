@@ -326,7 +326,7 @@ func _on_alert_rotate(which, angle):
 	
 func get_tutorial_node(step):
 	var path = "CanvasLayer/Tutorial/Tutorial_" + String(step)
-	return get_node(path)
+	return get_node_or_null(path)
 	
 func show_tut(f):
 	if f < 1:
